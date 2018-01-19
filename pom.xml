@@ -15,7 +15,7 @@
             <version>3.6.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.jena/jena-arq -->
+        <!-- https://mvnrepository.com/artifact/org.apache.jena/apache-jena-libs -->
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>apache-jena-libs</artifactId>
@@ -28,6 +28,7 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.12</version>
         </dependency>
+
 
     </dependencies>
 
