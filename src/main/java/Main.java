@@ -8,8 +8,8 @@ public class Main {
         Model model = RDFDataMgr.loadModel("data/ontology_restaurant1_rdf.owl");
         Dataset dataset = RDFDataMgr.loadDataset("data/restaurant1.rdf") ;
         // RDFDataMgr.read(model, "data/restaurant2.rdf");
-
-        System.out.println(dataset.getDefaultModel().size());
+        dataset.setDefaultModel(model);
+        System.out.println();
         System.out.println(model.size());
     }
 }
