@@ -1,17 +1,28 @@
 import org.apache.jena.query.Dataset;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.RDFList;
-import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.vocabulary.VCARD;
 
 public class Main {
     public static void main(String[] args){
-        System.out.println("The model is :");
+        //System.out.println("The model is :");
         Model model = RDFDataMgr.loadModel("data/ontology_restaurant1_rdf.owl");
         RDFDataMgr.read(model, "data/restaurant1.rdf");
-        RDFDataMgr.write(System.out, model, Lang.RDFXML) ;
+        //RDFDataMgr.write(System.out, model, Lang.RDFXML) ;
+
+        ResIterator iter = model.listSubjects();
+        while (iter.hasNext()) {
+            Resource r = iter.nextResource();
+            System.out.println(r.getLocalName() + "->");
+            StmtIterator properties = r.listProperties();
+            while (properties.hasNext()) {
+                Statement p = properties.nextStatement();
+                System.out.println(p.getSubject() + " " + p.getPredicate());
+            }
+            break;
+        }
+
 
         //System.out.println("The model from dataset is :");
         //Dataset data = RDFDataMgr.loadDataset("data/restaurant1.rdf");
