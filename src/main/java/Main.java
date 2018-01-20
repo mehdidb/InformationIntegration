@@ -7,20 +7,38 @@ import org.apache.jena.vocabulary.VCARD;
 public class Main {
     public static void main(String[] args){
         //System.out.println("The model is :");
-        Model model = RDFDataMgr.loadModel("data/ontology_restaurant1_rdf.owl");
-        RDFDataMgr.read(model, "data/restaurant1.rdf");
+        Model model = RDFDataMgr.loadModel("data/ontology_restaurant2_rdf.owl");
+        RDFDataMgr.read(model, "data/restaurant2.rdf");
         //RDFDataMgr.write(System.out, model, Lang.RDFXML) ;
 
         ResIterator iter = model.listSubjects();
         while (iter.hasNext()) {
             Resource r = iter.nextResource();
-            System.out.println(r.getLocalName() + "->");
-            StmtIterator properties = r.listProperties();
-            while (properties.hasNext()) {
-                Statement p = properties.nextStatement();
-                System.out.println(p.getSubject() + " " + p.getPredicate());
+            if (r.getLocalName() == null) {
+                continue;
             }
-            break;
+            if (r.getLocalName().equals("restaurant2-Restaurant0")) { // r.getLocalName().equals("restaurant1-Restaurant0")
+                System.out.println(r);
+                StmtIterator properties = r.listProperties();
+
+                while (properties.hasNext()) {
+                    Statement p = properties.nextStatement();
+                    if (!p.getObject().toString().contains("Address")) {
+                        System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
+                    }
+
+                    if (p.getObject().toString().contains("Address")) {
+                        StmtIterator address = model.getResource(p.getObject().toString()).listProperties();
+                        while (address.hasNext()) {
+                            Statement a = address.nextStatement();
+                            System.out.println(a.getSubject() + " " + a.getPredicate() + " " + a.getObject());
+                        }
+
+                    }
+                }
+                break;
+            }
+
         }
 
 
