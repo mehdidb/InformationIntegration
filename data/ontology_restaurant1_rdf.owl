@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="#"
+<rdf:RDF xmlns="http://www.okkam.org/ontology_restaurant1.owl#"
      xmlns:ontology_restaurant1="http://www.okkam.org/ontology_restaurant1.owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
