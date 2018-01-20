@@ -44,6 +44,7 @@ public class Main {
 
         }
 
+        /**
         System.out.println("DEBUG : " );
         Property it2 = mapping.getProperty("http://www.okkam.org/ontology_restaurant1.owl#street");
         System.out.println(it2);
@@ -52,7 +53,29 @@ public class Main {
             Statement a = it.nextStatement();
             System.out.println(a.getSubject() + " " + a.getPredicate() + " " + a.getObject());
         }
+         */
+        /**
+        NodeIterator node = mapping.listObjects();
+        while (node.hasNext()) {
+            Resource r = node.next().asResource();
+            StmtIterator properties = r.listProperties();
 
-        
+            while (properties.hasNext()) {
+                Statement p = properties.nextStatement();
+                System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
+            }
+        }
+         */
+
+        ResIterator subject = mapping.listSubjects();
+        while (subject.hasNext()) {
+            Resource r = subject.next();
+            StmtIterator properties = r.listProperties();
+
+            while (properties.hasNext()) {
+                Statement p = properties.nextStatement();
+                System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
+            }
+        }
     }
 }
