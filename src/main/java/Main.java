@@ -197,6 +197,19 @@ public class Main {
         }
     }
 
+    private static HashSet<Statement> findMatch(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s, HashSet<Statement> q) {
+        for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
+            HashSet<Statement> hs = new HashSet<Statement>();
+            hs.addAll(q);
+            hs.retainAll(p.getLeft());
+            if (hs.size() == q.size()) {
+                return p.getRight();
+            }
+        }
+
+        return null;
+    }
+
     public static void main(String[] args){
         /**
          * Read the ontology and the RDF graph from restaurant1
@@ -232,7 +245,6 @@ public class Main {
         OntModel m = getOntologyModel(ONT_2_OWL);
         //printClasses(m);
 
-        /**
         int id = 0;
         ResIterator it = model1.listSubjects();
         while (it.hasNext()) {
@@ -241,21 +253,39 @@ public class Main {
                 continue;
 
             StmtIterator properties = r.listProperties();
+            HashSet<Statement> propHS = new HashSet<Statement>();
+            HashSet<Statement> out = findMatch(set, propHS);
+            propHS.addAll(r.listProperties().toList());
+            properties = r.listProperties();
+            //System.out.println(propHS.size());
             while (properties.hasNext()) {
                 Statement p = properties.nextStatement();
                 //System.out.println(p.getSubject() + " -> " + p.getPredicate() + " -> " + p.getObject());
                 Resource sub = p.getSubject();
                 Property prd = p.getPredicate();
                 RDFNode obj = p.getObject();
-                if (mappingHM.containsKey(p.getPredicate().toString())) {
-                    prd = ResourceFactory.createProperty(mappingHM.get(p.getPredicate().toString()));
+
+                //System.out.println(out.size());
+                /**
+                 * 1..1 Case
+                 */
+                if (out.size() == 1 && properties.toSet().size() == 1) {
+                    System.out.println(out);
+                    System.out.println(properties.toSet());
+                    prd = ResourceFactory.createProperty(out.iterator().next().getObject().toString());
                     Statement s = ResourceFactory.createStatement(sub, prd, obj);
                     model1 = model1.remove(p);
                     model1 = model1.add(s);
                     properties = r.listProperties();
+                    properties.next();
+                    break;
                 }
 
-                if (p.getPredicate().toString().contains("is_in_city")) {
+                /**
+                 * N..1 Case
+                 */
+                /**
+                if (false && p.getPredicate().toString().contains("is_in_city")) {
                     prd = ResourceFactory.createProperty("http://www.okkam.org/ontology_restaurant2.owl#city");
                     Resource rs1 = model1.getResource(p.getObject().toString());
                     StmtIterator prop = rs1.listProperties();
@@ -273,7 +303,11 @@ public class Main {
                     model1 = model1.add(s);
                     properties = r.listProperties();
                 }
-
+                */
+                /**
+                 * 1..N Case
+                 */
+                /**
                 if (p.getPredicate().toString().contains("category") && !p.getPredicate().toString().contains("has_category")) {
 
                     Individual cat = m.createIndividual("http://www.okkam.org/ontology_restaurant2.owl#category" + id++, m.getOntClass("http://www.okkam.org/ontology_restaurant2.owl#Category"));
@@ -287,6 +321,7 @@ public class Main {
                     model1 = model1.add(s);
                     properties = r.listProperties();
                 }
+                 */
             }
 
             properties = r.listProperties();
@@ -296,7 +331,8 @@ public class Main {
                 m.add(p);
             }
         }
-         */
+
+        outputModel(m);
     }
 
     public static OntModel getOntologyModel(String ontoFile)
