@@ -21,7 +21,6 @@
     <orderEntry type="library" name="Maven: org.apache.jena:jena-shaded-guava:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-csv:1.5" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.4" level="project" />
     <orderEntry type="library" name="Maven: com.github.andrewoma.dexx:collection:0.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.jena:jena-tdb:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.jena:jena-arq:3.6.0" level="project" />
@@ -42,5 +41,6 @@
     <orderEntry type="library" name="Maven: org.apache.jena:jena-dboe-index:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.jena:jena-rdfconnection:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.12" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.0" level="project" />
   </component>
 </module>

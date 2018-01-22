@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.Lang;
@@ -13,75 +15,78 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Main {
-    public static void main(String[] args){
-        Model model1 = RDFDataMgr.loadModel("data/ontology_restaurant1_rdf.owl");
-        RDFDataMgr.read(model1, "data/restaurant1.rdf");
-
-        Model model2 = RDFDataMgr.loadModel("data/ontology_restaurant2_rdf.owl");
-        //RDFDataMgr.read(model2, "data/restaurant2.rdf");
-
-        Model mapping = RDFDataMgr.loadModel("data/mapping_restaurant.rdf");
-        //RDFDataMgr.write(System.out, model, Lang.RDFXML) ;
-
-        OntModel m = getOntologyModel("data/ontology_restaurant2_rdf.owl");
-
-        for (OntClass i : m.listClasses().toList()) {
-            //System.out.println(i);
-        }
-
-        ResIterator iter = model1.listSubjects();
-        while (iter.hasNext()) {
-            Resource r = iter.nextResource();
+    private static void printModel(Model m) {
+        ResIterator it = m.listSubjects();
+        while (it.hasNext()) {
+            Resource r = it.nextResource();
             if (r.getLocalName() == null) {
                 continue;
             }
-            if (r.getLocalName().equals("restaurant2-Restaurant0")) { // r.getLocalName().equals("restaurant1-Restaurant0")
-                //System.out.println(r);
+            if (r.getLocalName().equals("restaurant2-Restaurant0")) {
+                System.out.println(r);
                 StmtIterator properties = r.listProperties();
 
                 while (properties.hasNext()) {
                     Statement p = properties.nextStatement();
                     if (!p.getObject().toString().contains("Address")) {
-                        //System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
+                        System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
                     }
 
                     if (p.getObject().toString().contains("Address")) {
-                        StmtIterator address = model1.getResource(p.getObject().toString()).listProperties();
+                        StmtIterator address = m.getResource(p.getObject().toString()).listProperties();
                         while (address.hasNext()) {
                             Statement a = address.nextStatement();
-                            //System.out.println(a.getSubject() + " " + a.getPredicate() + " " + a.getObject());
+                            System.out.println(a.getSubject() + " " + a.getPredicate() + " " + a.getObject());
                         }
                     }
                 }
                 break;
             }
-
         }
+    }
 
-        /**
-        System.out.println("DEBUG : " );
-        Property it2 = mapping.getProperty("http://www.okkam.org/ontology_restaurant1.owl#street");
-        System.out.println(it2);
-        StmtIterator it = it2.listProperties();
-        while (it.hasNext()) {
-            Statement a = it.nextStatement();
-            System.out.println(a.getSubject() + " " + a.getPredicate() + " " + a.getObject());
+    private static void printClasses(OntModel m) {
+        for (OntClass i : m.listClasses().toList()) {
+            System.out.println(i);
         }
-         */
-        /**
-        NodeIterator node = mapping.listObjects();
-        while (node.hasNext()) {
-            Resource r = node.next().asResource();
-            StmtIterator properties = r.listProperties();
+    }
 
-            while (properties.hasNext()) {
-                Statement p = properties.nextStatement();
-                System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
+    private static void outputModel(OntModel m) {
+        FileOutputStream fop = null;
+        File file;
+        try {
+
+            file = new File("data/restaurant1_new.rdf");
+            fop = new FileOutputStream(file);
+
+            // if file doesnt exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            // get the content in bytes
+            RDFDataMgr.write(fop, m, Lang.RDFXML);
+            fop.flush();
+            fop.close();
+
+            System.out.println("Done");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fop != null) {
+                    fop.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-         */
+    }
 
-        ResIterator subject = mapping.listSubjects();
+    private static HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> generateSets(Model map) {
+        HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> ret = new HashSet<Pair<HashSet<Statement>, HashSet<Statement>>>();
+
+        ResIterator subject = map.listSubjects();
         HashMap<String, HashSet<Statement>> hm = new HashMap<String, HashSet<Statement>>();
         while (subject.hasNext()) {
             Resource r = subject.next();
@@ -99,8 +104,7 @@ public class Main {
             }
         }
 
-        subject = mapping.listSubjects();
-        HashMap<String, String> mappingHM = new HashMap<String, String>();
+        subject = map.listSubjects();
         while (subject.hasNext()) {
             Resource r = subject.next();
             StmtIterator properties = r.listProperties();
@@ -108,76 +112,42 @@ public class Main {
             while (properties.hasNext()) {
                 Statement p = properties.nextStatement();
 
-
                 if (p.getPredicate().toString().contains("mapTo")) {
-
-
-                    HashSet<Statement> hsS1 = hm.get(p.getSubject().toString());
-                    HashSet<Statement> hsS2 = hm.get(p.getObject().toString());
-                    if (hsS1.size() == 1 && hsS2.size() == 1) {
-                        mappingHM.put(hsS1.iterator().next().getObject().toString(), hsS2.iterator().next().getObject().toString());
-                    }
-                    /**
-                    for (Statement st : hsS) {
-                        System.out.print(st.getObject() + " ");
-                    }
-
-
-                    for (Statement st : hsSt) {
-                        System.out.print(" Mapped to : " + st.getObject());
-                    }
-                    System.out.println();
-                     */
+                    HashSet<Statement> hs1 = hm.get(p.getSubject().toString());
+                    HashSet<Statement> hs2 = hm.get(p.getObject().toString());
+                    ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs1, hs2));
                 }
-                //System.out.println(p.getSubject() + " -> " + p.getPredicate() + " -> " + p.getObject());
-            }
-            //System.out.println("-------");
-        }
-        /**
-        for (String key : mappingHM.keySet()) {
-            //System.out.println(key + " -> " + mappingHM.get(key));
-        }
-         */
-        /**
-        //System.out.println("======================================");
-        ResIterator it = model1.listSubjects();
-        while (it.hasNext()) {
-            Resource r = it.nextResource();
-            //System.out.println(r);
-            StmtIterator properties = r.listProperties();
-            while (properties.hasNext()) {
-                Statement p = properties.nextStatement();
-                Resource sub = p.getSubject();
-                Property prd = p.getPredicate();
-                RDFNode obj = p.getObject();
-                if (mappingHM.containsKey(p.getPredicate().toString())) {
-                    prd = ResourceFactory.createProperty(mappingHM.get(p.getPredicate().toString()));
-                    Statement s = ResourceFactory.createStatement(sub, prd, obj);
-                    model1.remove(p);
-                    model2.add(s);
-                    properties = r.listProperties();
-                }
-
-                if (p.getPredicate().toString().contains("is_in_city")) {
-                    obj = model1.createTypedLiteral(model1.getResource(p.getObject().toString()).listProperties().nextStatement().getObject());
-                    Resource rs1 = model1.getResource(p.getObject().toString());
-                    StmtIterator prop = rs1.listProperties();
-                    while (prop.hasNext()) {
-                        Statement a = prop.nextStatement();
-                        model1.remove(a);
-                        prop = rs1.listProperties();
-                    }
-
-                    Statement s = ResourceFactory.createStatement(sub, prd, obj);
-                    model1.remove(p);
-                    model2.add(s);
-                    properties = r.listProperties();
-                }
-
-
             }
         }
-        */
+
+        return ret;
+    }
+
+    public static void main(String[] args){
+        Model model1 = RDFDataMgr.loadModel("data/ontology_restaurant1_rdf.owl");
+        RDFDataMgr.read(model1, "data/restaurant1.rdf");
+
+        Model model2 = RDFDataMgr.loadModel("data/ontology_restaurant2_rdf.owl");
+        Model mapping = RDFDataMgr.loadModel("data/mapping_restaurant.rdf");
+
+        OntModel m1 = getOntologyModel("data/ontology_restaurant1_rdf.owl");
+        OntModel m = getOntologyModel("data/ontology_restaurant2_rdf.owl");
+
+        HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
+        for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
+
+            for (Statement st : i.getLeft()) {
+                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
+            }
+
+            System.out.print(" ----> ");
+            for (Statement st : i.getRight()) {
+                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
+            }
+            System.out.println();
+        }
+
+        /**
         int id = 0;
         ResIterator it = model1.listSubjects();
         while (it.hasNext()) {
@@ -240,40 +210,8 @@ public class Main {
                 m.add(p);
             }
         }
-
+        */
         //RDFDataMgr.write(System.out, m, Lang.RDFXML);
-
-         FileOutputStream fop = null;
-         File file;
-         try {
-
-         file = new File("data/restaurant1_new.rdf");
-         fop = new FileOutputStream(file);
-
-         // if file doesnt exists, then create it
-         if (!file.exists()) {
-         file.createNewFile();
-         }
-
-         // get the content in bytes
-             RDFDataMgr.write(fop, m, Lang.RDFXML);
-         fop.flush();
-         fop.close();
-
-         System.out.println("Done");
-
-         } catch (IOException e) {
-         e.printStackTrace();
-         } finally {
-         try {
-         if (fop != null) {
-         fop.close();
-         }
-         } catch (IOException e) {
-         e.printStackTrace();
-         }
-         }
-
     }
 
     public static OntModel getOntologyModel(String ontoFile)
