@@ -20,6 +20,7 @@ public class Main {
     private final static String ONT_2_OWL = "data/ontology_restaurant2_rdf.owl";
     private final static String ONT_1_RDF = "data/restaurant1.rdf";
     private final static String ONT_2_RDF = "data/restaurant2.rdf";
+    private final static String MAPPING_FILE = "data/mapping_restaurant.rdf";
     private final static String OUTPUT_RDF = "data/restaurant1_out.rdf";
 
     private static String getOntlogyLink() {
@@ -165,28 +166,30 @@ public class Main {
         /**
          * Read the ontology and the RDF graph from restaurant1
          */
-        Model model1 = RDFDataMgr.loadModel("data/ontology_restaurant1_rdf.owl");
-        RDFDataMgr.read(model1, "data/restaurant1.rdf");
-        printModel(model1);
+        Model model1 = RDFDataMgr.loadModel(ONT_1_OWL);
+        RDFDataMgr.read(model1, ONT_1_RDF);
+        //printModel(model1);
 
         /**
          * Read the ontology of restaurant2
          */
-        Model model2 = RDFDataMgr.loadModel("data/ontology_restaurant2_rdf.owl");
+        Model model2 = RDFDataMgr.loadModel(ONT_2_OWL);
+
+        ONT_1_LINK = getOntlogyLink();
 
         /**
          * Read the Mapping file and generate sets
          * Basically :
          * Element of Restaurant1 -> Element of Restaurant2
          */
-        Model mapping = RDFDataMgr.loadModel("data/mapping_restaurant.rdf");
-        //HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
+        Model mapping = RDFDataMgr.loadModel(MAPPING_FILE);
+        HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
 
-        OntModel m1 = getOntologyModel("data/ontology_restaurant1_rdf.owl");
-        OntModel m = getOntologyModel("data/ontology_restaurant2_rdf.owl");
+        OntModel m1 = getOntologyModel(ONT_1_OWL);
+        OntModel m = getOntologyModel(ONT_2_OWL);
 
-        ONT_1_LINK = getOntlogyLink();
-        /**
+
+
         for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
 
             for (Statement st : i.getLeft()) {
@@ -200,7 +203,7 @@ public class Main {
 
             System.out.println();
         }
-        */
+
         /**
         int id = 0;
         ResIterator it = model1.listSubjects();
