@@ -149,7 +149,7 @@ public class Main {
                 if (p.getPredicate().toString().contains("mapTo")) {
                     HashSet<Statement> hs1 = hm.get(p.getSubject().toString());
                     HashSet<Statement> hs2 = hm.get(p.getObject().toString());
-                    if (hs1.iterator().next().getPredicate().toString().contains(ONT_1_LINK)) {
+                    if (!hs1.iterator().next().getPredicate().toString().contains(ONT_1_LINK)) {
                         ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs1, hs2));
                     } else {
                         ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs2, hs1));
@@ -160,6 +160,22 @@ public class Main {
         }
 
         return ret;
+    }
+
+    private static void printSets(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set) {
+        for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
+
+            for (Statement st : i.getLeft()) {
+                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
+            }
+
+            System.out.print(" ----> ");
+            for (Statement st : i.getRight()) {
+                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
+            }
+
+            System.out.println();
+        }
     }
 
     public static void main(String[] args){
@@ -175,6 +191,9 @@ public class Main {
          */
         Model model2 = RDFDataMgr.loadModel(ONT_2_OWL);
 
+        /**
+         * Get the Ontology Link to
+         */
         ONT_1_LINK = getOntlogyLink();
 
         /**
@@ -184,25 +203,11 @@ public class Main {
          */
         Model mapping = RDFDataMgr.loadModel(MAPPING_FILE);
         HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
+        printSets(set);
 
         OntModel m1 = getOntologyModel(ONT_1_OWL);
         OntModel m = getOntologyModel(ONT_2_OWL);
 
-
-
-        for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
-
-            for (Statement st : i.getLeft()) {
-                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
-            }
-
-            System.out.print(" ----> ");
-            for (Statement st : i.getRight()) {
-                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
-            }
-
-            System.out.println();
-        }
 
         /**
         int id = 0;
