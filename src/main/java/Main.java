@@ -15,14 +15,34 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Main {
-    private static void printModel(Model m) {
+    private static String ONT_1_LINK;
+    private final static String ONT_1_OWL = "data/ontology_restaurant1_rdf.owl";
+    private final static String ONT_2_OWL = "data/ontology_restaurant2_rdf.owl";
+    private final static String ONT_1_RDF = "data/restaurant1.rdf";
+    private final static String ONT_2_RDF = "data/restaurant2.rdf";
+    private final static String OUTPUT_RDF = "data/restaurant1_out.rdf";
+
+    private static String getOntlogyLink() {
+        OntModel m = getOntologyModel(ONT_1_OWL);
+        for (OntClass i : m.listClasses().toList()) {
+            if (ONT_1_LINK == null) {
+                return i.toString().split("#")[0];
+            }
+        }
+
+        return null;
+    }
+
+    private static void debugModel(Model m) {
+        // For science
         ResIterator it = m.listSubjects();
         while (it.hasNext()) {
             Resource r = it.nextResource();
             if (r.getLocalName() == null) {
                 continue;
             }
-            if (r.getLocalName().equals("restaurant2-Restaurant0")) {
+            System.out.println(r);
+            if (r.getLocalName().equals("restaurant1-Restaurant0")) {
                 System.out.println(r);
                 StmtIterator properties = r.listProperties();
 
@@ -45,6 +65,20 @@ public class Main {
         }
     }
 
+    private static void printModel(Model m) {
+        ResIterator it = m.listSubjects();
+        while (it.hasNext()) {
+            Resource r = it.nextResource();
+            StmtIterator properties = r.listProperties();
+
+            while (properties.hasNext()) {
+                Statement p = properties.nextStatement();
+                System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
+                return;
+            }
+        }
+    }
+
     private static void printClasses(OntModel m) {
         for (OntClass i : m.listClasses().toList()) {
             System.out.println(i);
@@ -55,8 +89,7 @@ public class Main {
         FileOutputStream fop = null;
         File file;
         try {
-
-            file = new File("data/restaurant1_new.rdf");
+            file = new File(OUTPUT_RDF);
             fop = new FileOutputStream(file);
 
             // if file doesnt exists, then create it
@@ -115,7 +148,12 @@ public class Main {
                 if (p.getPredicate().toString().contains("mapTo")) {
                     HashSet<Statement> hs1 = hm.get(p.getSubject().toString());
                     HashSet<Statement> hs2 = hm.get(p.getObject().toString());
-                    ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs1, hs2));
+                    if (hs1.iterator().next().getPredicate().toString().contains(ONT_1_LINK)) {
+                        ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs1, hs2));
+                    } else {
+                        ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs2, hs1));
+                    }
+
                 }
             }
         }
@@ -124,16 +162,31 @@ public class Main {
     }
 
     public static void main(String[] args){
+        /**
+         * Read the ontology and the RDF graph from restaurant1
+         */
         Model model1 = RDFDataMgr.loadModel("data/ontology_restaurant1_rdf.owl");
         RDFDataMgr.read(model1, "data/restaurant1.rdf");
+        printModel(model1);
 
+        /**
+         * Read the ontology of restaurant2
+         */
         Model model2 = RDFDataMgr.loadModel("data/ontology_restaurant2_rdf.owl");
+
+        /**
+         * Read the Mapping file and generate sets
+         * Basically :
+         * Element of Restaurant1 -> Element of Restaurant2
+         */
         Model mapping = RDFDataMgr.loadModel("data/mapping_restaurant.rdf");
+        //HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
 
         OntModel m1 = getOntologyModel("data/ontology_restaurant1_rdf.owl");
         OntModel m = getOntologyModel("data/ontology_restaurant2_rdf.owl");
 
-        HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
+        ONT_1_LINK = getOntlogyLink();
+        /**
         for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
 
             for (Statement st : i.getLeft()) {
@@ -144,9 +197,10 @@ public class Main {
             for (Statement st : i.getRight()) {
                 System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
             }
+
             System.out.println();
         }
-
+        */
         /**
         int id = 0;
         ResIterator it = model1.listSubjects();
@@ -210,8 +264,7 @@ public class Main {
                 m.add(p);
             }
         }
-        */
-        //RDFDataMgr.write(System.out, m, Lang.RDFXML);
+         */
     }
 
     public static OntModel getOntologyModel(String ontoFile)
