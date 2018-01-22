@@ -6,6 +6,7 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.shared.JenaException;
 import org.apache.jena.util.FileManager;
+import org.apache.jena.util.iterator.ExtendedIterator;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,9 +14,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Properties;
 
 public class Main {
     private static String ONT_1_LINK;
+    private static String ONT_2_LINK;
     private final static String ONT_1_OWL = "data/ontology_restaurant1_rdf.owl";
     private final static String ONT_2_OWL = "data/ontology_restaurant2_rdf.owl";
     private final static String ONT_1_RDF = "data/restaurant1.rdf";
@@ -23,10 +26,21 @@ public class Main {
     private final static String MAPPING_FILE = "data/mapping_restaurant.rdf";
     private final static String OUTPUT_RDF = "data/restaurant1_out.rdf";
 
-    private static String getOntlogyLink() {
+    private static String getOntlogyLink1() {
         OntModel m = getOntologyModel(ONT_1_OWL);
         for (OntClass i : m.listClasses().toList()) {
             if (ONT_1_LINK == null) {
+                return i.toString().split("#")[0];
+            }
+        }
+
+        return null;
+    }
+
+    private static String getOntlogyLink2() {
+        OntModel m = getOntologyModel(ONT_2_OWL);
+        for (OntClass i : m.listClasses().toList()) {
+            if (ONT_2_LINK == null) {
                 return i.toString().split("#")[0];
             }
         }
@@ -83,6 +97,11 @@ public class Main {
     private static void printClasses(OntModel m) {
         for (OntClass i : m.listClasses().toList()) {
             System.out.println(i);
+            ExtendedIterator<OntProperty> list = i.listDeclaredProperties();
+            while (list.hasNext()) {
+                Property p = list.next();
+                System.out.println("Property : " + p);
+            }
         }
     }
 
@@ -190,11 +209,15 @@ public class Main {
          * Read the ontology of restaurant2
          */
         Model model2 = RDFDataMgr.loadModel(ONT_2_OWL);
+        //printModel(model2);
 
         /**
          * Get the Ontology Link to
          */
-        ONT_1_LINK = getOntlogyLink();
+        ONT_1_LINK = getOntlogyLink1();
+        //System.out.println(ONT_1_LINK);
+        ONT_2_LINK = getOntlogyLink2();
+        //System.out.println(ONT_2_LINK);
 
         /**
          * Read the Mapping file and generate sets
@@ -207,7 +230,7 @@ public class Main {
 
         OntModel m1 = getOntologyModel(ONT_1_OWL);
         OntModel m = getOntologyModel(ONT_2_OWL);
-
+        //printClasses(m);
 
         /**
         int id = 0;
@@ -216,6 +239,7 @@ public class Main {
             Resource r = it.nextResource();
             if (r.toString().contains("City"))
                 continue;
+
             StmtIterator properties = r.listProperties();
             while (properties.hasNext()) {
                 Statement p = properties.nextStatement();
