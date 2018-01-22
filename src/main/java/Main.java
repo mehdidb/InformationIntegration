@@ -1,14 +1,13 @@
 import org.apache.jena.ontology.*;
-import org.apache.jena.ontology.impl.OntModelImpl;
-import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.shared.JenaException;
 import org.apache.jena.util.FileManager;
-import org.apache.jena.util.iterator.ExtendedIterator;
-import org.apache.jena.vocabulary.VCARD;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -243,6 +242,38 @@ public class Main {
         }
 
         //RDFDataMgr.write(System.out, m, Lang.RDFXML);
+
+         FileOutputStream fop = null;
+         File file;
+         try {
+
+         file = new File("data/restaurant1_new.rdf");
+         fop = new FileOutputStream(file);
+
+         // if file doesnt exists, then create it
+         if (!file.exists()) {
+         file.createNewFile();
+         }
+
+         // get the content in bytes
+             RDFDataMgr.write(fop, m, Lang.RDFXML);
+         fop.flush();
+         fop.close();
+
+         System.out.println("Done");
+
+         } catch (IOException e) {
+         e.printStackTrace();
+         } finally {
+         try {
+         if (fop != null) {
+         fop.close();
+         }
+         } catch (IOException e) {
+         e.printStackTrace();
+         }
+         }
+
     }
 
     public static OntModel getOntologyModel(String ontoFile)
