@@ -1,3 +1,4 @@
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ontology.*;
@@ -8,13 +9,13 @@ import org.apache.jena.shared.JenaException;
 import org.apache.jena.util.FileManager;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
+import javax.swing.plaf.nimbus.State;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Properties;
 
 public class Main {
     private static String ONT_1_LINK;
@@ -25,6 +26,9 @@ public class Main {
     private final static String ONT_2_RDF = "data/restaurant2.rdf";
     private final static String MAPPING_FILE = "data/mapping_restaurant.rdf";
     private final static String OUTPUT_RDF = "data/restaurant1_out.rdf";
+    private static HashSet<String> entities11;
+    private static HashSet<String> entities1N;
+    private static HashSet<String> entitiesN1;
 
     private static String getOntlogyLink1() {
         OntModel m = getOntologyModel(ONT_1_OWL);
@@ -47,7 +51,7 @@ public class Main {
 
         return null;
     }
-
+    /*
     private static void debugModel(Model m) {
         // For science
         ResIterator it = m.listSubjects();
@@ -89,7 +93,6 @@ public class Main {
             while (properties.hasNext()) {
                 Statement p = properties.nextStatement();
                 System.out.println(p.getSubject() + " " + p.getPredicate() + " " + p.getObject());
-                return;
             }
         }
     }
@@ -104,7 +107,9 @@ public class Main {
             }
         }
     }
+    */
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private static void outputModel(OntModel m) {
         FileOutputStream fop = null;
         File file;
@@ -113,9 +118,7 @@ public class Main {
             fop = new FileOutputStream(file);
 
             // if file doesnt exists, then create it
-            if (!file.exists()) {
-                file.createNewFile();
-            }
+            if (!file.exists()) file.createNewFile();
 
             // get the content in bytes
             RDFDataMgr.write(fop, m, Lang.RDFXML);
@@ -137,16 +140,16 @@ public class Main {
     }
 
     private static HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> generateSets(Model map) {
-        HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> ret = new HashSet<Pair<HashSet<Statement>, HashSet<Statement>>>();
+        HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> ret = new HashSet<>();
 
         ResIterator subject = map.listSubjects();
-        HashMap<String, HashSet<Statement>> hm = new HashMap<String, HashSet<Statement>>();
+        HashMap<String, HashSet<Statement>> hm = new HashMap<>();
         while (subject.hasNext()) {
             Resource r = subject.next();
             StmtIterator properties = r.listProperties();
 
             if (!hm.containsKey(r.toString())) {
-                hm.put(r.toString(), new HashSet<Statement>());
+                hm.put(r.toString(), new HashSet<>());
             }
 
             while (properties.hasNext()) {
@@ -169,9 +172,9 @@ public class Main {
                     HashSet<Statement> hs1 = hm.get(p.getSubject().toString());
                     HashSet<Statement> hs2 = hm.get(p.getObject().toString());
                     if (!hs1.iterator().next().getPredicate().toString().contains(ONT_1_LINK)) {
-                        ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs1, hs2));
+                        ret.add(new ImmutablePair<>(hs1, hs2));
                     } else {
-                        ret.add(new ImmutablePair<HashSet<Statement>, HashSet<Statement>>(hs2, hs1));
+                        ret.add(new ImmutablePair<>(hs2, hs1));
                     }
 
                 }
@@ -180,30 +183,98 @@ public class Main {
 
         return ret;
     }
-
+    /*
     private static void printSets(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set) {
         for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
-
-            for (Statement st : i.getLeft()) {
-                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
-            }
-
+            System.out.print(i.getLeft());
             System.out.print(" ----> ");
-            for (Statement st : i.getRight()) {
-                System.out.print("[" + st.getPredicate() + " " + st.getObject() + "] ");
-            }
-
+            System.out.print(i.getRight());
             System.out.println();
         }
     }
 
-    private static HashSet<Statement> findMatch(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s, HashSet<Statement> q) {
+
+    private static HashSet<String> findMatch(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s, HashSet<Statement> q) {
+        //System.out.println("Entering");
+        HashSet<String> qHS = new HashSet<>();
+        for (Statement v : q) {
+            if ((v.getPredicate().toString()).contains(ONT_1_LINK)) {
+                //System.out.println(new String((v.getPredicate()).toString()));
+                qHS.add(new String((v.getPredicate()).toString()));
+            }
+        }
+
+        //System.out.println("DEBUG qHS=" + qHS);
+
         for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
-            HashSet<Statement> hs = new HashSet<Statement>();
-            hs.addAll(q);
-            hs.retainAll(p.getLeft());
-            if (hs.size() == q.size()) {
-                return p.getRight();
+            HashSet<String> lHS = new HashSet<>();
+
+            for (Statement v : p.getLeft()) {
+                if ((v.getObject().toString()).contains(ONT_1_LINK)) {
+                    //System.out.println(new String((v.getObject()).toString()));
+                    lHS.add(new String((v.getObject()).toString()));
+                }
+            }
+
+            //System.out.println("DEBUG lHS=" + lHS);
+
+            if (lHS.equals(qHS)) {
+                HashSet<String> ret = new HashSet<>();
+                for (Statement v : p.getRight()) {
+                    if ((v.getObject().toString()).contains(ONT_2_LINK)) {
+                        //System.out.println(v.getObject().toString());
+                        ret.add(new String((v.getObject()).toString()));
+                    }
+                }
+                //System.out.println("Exiting");
+                return ret;
+            }
+
+        }
+
+        return null;
+    }
+    */
+    private static HashSet<String> generateEntities11(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s) {
+        HashSet<String> ret = new HashSet<>();
+        for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
+            HashSet<String> hs1 = new HashSet<>();
+            HashSet<String> hs2 = new HashSet<>();
+
+            p.getLeft().forEach(st -> hs1.add((st.getPredicate()).toString()));
+            p.getRight().forEach(st -> hs2.add((st.getPredicate()).toString()));
+
+            if (hs1.size() == 1 && hs2.size() == 1) {
+                ret.add(p.getLeft().iterator().next().getObject().toString());
+            }
+        }
+
+        return ret;
+    }
+
+    private static HashSet<String> generateEntities1N(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s) {
+        HashSet<String> ret = new HashSet<>();
+        for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
+            HashSet<String> hs1 = new HashSet<>();
+            HashSet<String> hs2 = new HashSet<>();
+
+            p.getLeft().forEach(st -> hs1.add((st.getPredicate()).toString()));
+            p.getRight().forEach(st -> hs2.add((st.getPredicate()).toString()));
+
+            if (hs1.size() == 1 && hs2.size() > 1) {
+                ret.add(p.getLeft().iterator().next().getObject().toString());
+            }
+        }
+
+        return ret;
+    }
+
+    private static Pair<HashSet<Statement>, HashSet<Statement>> getMappedURI(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set, String hs) {
+        for (Pair<HashSet<Statement>, HashSet<Statement>> p : set) {
+            for (Statement i : p.getLeft()) {
+                if (i.getPredicate().toString().contains("entity1") && i.getObject().toString().equals(hs)) {
+                    return p;
+                }
             }
         }
 
@@ -211,20 +282,20 @@ public class Main {
     }
 
     public static void main(String[] args){
-        /**
+        /*
          * Read the ontology and the RDF graph from restaurant1
          */
         Model model1 = RDFDataMgr.loadModel(ONT_1_OWL);
         RDFDataMgr.read(model1, ONT_1_RDF);
         //printModel(model1);
 
-        /**
+        /*
          * Read the ontology of restaurant2
          */
-        Model model2 = RDFDataMgr.loadModel(ONT_2_OWL);
+        //Model model2 = RDFDataMgr.loadModel(ONT_2_OWL);
         //printModel(model2);
 
-        /**
+        /*
          * Get the Ontology Link to
          */
         ONT_1_LINK = getOntlogyLink1();
@@ -232,14 +303,24 @@ public class Main {
         ONT_2_LINK = getOntlogyLink2();
         //System.out.println(ONT_2_LINK);
 
-        /**
+        /*
          * Read the Mapping file and generate sets
          * Basically :
          * Element of Restaurant1 -> Element of Restaurant2
          */
         Model mapping = RDFDataMgr.loadModel(MAPPING_FILE);
         HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
-        printSets(set);
+        //printSets(set);
+
+        /*
+         * Generate all 1..1 entities
+         */
+        entities11 = generateEntities11(set);
+
+        /*
+         * Generate all 1..N entities
+         */
+        entities1N = generateEntities1N(set);
 
         OntModel m1 = getOntologyModel(ONT_1_OWL);
         OntModel m = getOntologyModel(ONT_2_OWL);
@@ -253,38 +334,30 @@ public class Main {
                 continue;
 
             StmtIterator properties = r.listProperties();
-            HashSet<Statement> propHS = new HashSet<Statement>();
-            HashSet<Statement> out = findMatch(set, propHS);
-            propHS.addAll(r.listProperties().toList());
-            properties = r.listProperties();
-            //System.out.println(propHS.size());
+            HashSet<Statement> propHS = new HashSet<>(r.listProperties().toSet());
+
+            //System.out.println(propHS);
             while (properties.hasNext()) {
                 Statement p = properties.nextStatement();
-                //System.out.println(p.getSubject() + " -> " + p.getPredicate() + " -> " + p.getObject());
                 Resource sub = p.getSubject();
                 Property prd = p.getPredicate();
                 RDFNode obj = p.getObject();
 
-                //System.out.println(out.size());
-                /**
+                /*
                  * 1..1 Case
                  */
-                if (out.size() == 1 && properties.toSet().size() == 1) {
-                    System.out.println(out);
-                    System.out.println(properties.toSet());
-                    prd = ResourceFactory.createProperty(out.iterator().next().getObject().toString());
+                if (entities11.contains(prd.toString())) {
+                    prd = ResourceFactory.createProperty(getMappedURI(set, prd.toString()).getRight().iterator().next().getObject().toString());
                     Statement s = ResourceFactory.createStatement(sub, prd, obj);
                     model1 = model1.remove(p);
                     model1 = model1.add(s);
                     properties = r.listProperties();
-                    properties.next();
-                    break;
                 }
 
-                /**
+                /*
                  * N..1 Case
                  */
-                /**
+                /*
                 if (false && p.getPredicate().toString().contains("is_in_city")) {
                     prd = ResourceFactory.createProperty("http://www.okkam.org/ontology_restaurant2.owl#city");
                     Resource rs1 = model1.getResource(p.getObject().toString());
@@ -304,38 +377,71 @@ public class Main {
                     properties = r.listProperties();
                 }
                 */
-                /**
-                 * 1..N Case
-                 */
-                /**
-                if (p.getPredicate().toString().contains("category") && !p.getPredicate().toString().contains("has_category")) {
 
-                    Individual cat = m.createIndividual("http://www.okkam.org/ontology_restaurant2.owl#category" + id++, m.getOntClass("http://www.okkam.org/ontology_restaurant2.owl#Category"));
-                    DatatypeProperty name = m.createDatatypeProperty("http://www.okkam.org/ontology_restaurant2.owl#name");
-                    cat.addProperty(name, m.createLiteral(p.getObject().toString()));
-                    prd = ResourceFactory.createProperty("http://www.okkam.org/ontology_restaurant2.owl#has_category");
-                    obj = ResourceFactory.createProperty(cat.getURI());//model1.createTypedLiteral();
+                /*
+                  1..N Case
+                 */
+                if (entities1N.contains(p.getPredicate().toString())) {
+                    Pair<HashSet<Statement>, HashSet<Statement>> pp = getMappedURI(set, prd.toString());
+
+                    String ent1URI = null, ent2URI = null;
+                    for (Statement st : pp.getRight()) {
+                        if (st.getPredicate().toString().contains("#entity1")) {
+                            ent1URI = st.getObject().toString();
+                        }
+
+                        if (st.getPredicate().toString().contains("#entity2")) {
+                            ent2URI = st.getObject().toString();
+                        }
+                    }
+
+                    boolean create = true;
+                    DatatypeProperty prp = null;
+                    Individual ind = null;
+                    prd = ResourceFactory.createProperty(ent1URI);
+                    for (Individual k : m.listIndividuals().toList()) {
+                        if (create == false)
+                            break;
+
+                        if (k.getOntClass().equals(m.getOntClass(ONT_2_LINK + "#" + StringUtils.capitalize(p.getPredicate().toString().split("#")[1])))) {
+                            for (Statement prop : k.listProperties().toList()) {
+                                if (prop.getPredicate().toString().equals(ent2URI) && prop.getObject().toString().equals(p.getObject().toString())) {
+                                    //create = false;
+                                    m.getDatatypeProperty(prop.getPredicate().toString());
+                                    obj = ResourceFactory.createProperty(k.getURI());
+                                    create = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (create == true) {
+                        ind = m.createIndividual(ONT_2_LINK + "#" + StringUtils.capitalize(p.getPredicate().toString().split("#")[1]) + id++, m.getOntClass(ONT_2_LINK + "#" + StringUtils.capitalize(p.getPredicate().toString().split("#")[1])));
+                        prp = m.createDatatypeProperty(ent2URI);
+                        ind.addProperty(prp, m.createLiteral(p.getObject().toString()));
+                        obj = ResourceFactory.createProperty(ind.getURI());
+                    }
 
                     Statement s = ResourceFactory.createStatement(sub, prd, obj);
+                    System.out.println(s);
                     model1 = model1.remove(p);
                     model1 = model1.add(s);
                     properties = r.listProperties();
                 }
-                 */
+
             }
 
             properties = r.listProperties();
             while (properties.hasNext()) {
-                Statement p = properties.nextStatement();
-                model2.add(p);
-                m.add(p);
+                m.add(properties.nextStatement());
             }
         }
 
         outputModel(m);
     }
 
-    public static OntModel getOntologyModel(String ontoFile)
+    private static OntModel getOntologyModel(String ontoFile)
     {
         OntModel ontoModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
         try
@@ -349,7 +455,7 @@ public class Main {
             {
                 e.printStackTrace();
             }
-            //System.out.println("Ontology " + ontoFile + " loaded.");
+            System.out.println("Ontology " + ontoFile + " loaded.");
         }
         catch (JenaException je)
         {
