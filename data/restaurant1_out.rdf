@@ -16,9 +16,9 @@
     <rdfs:comment>The class of restaurant</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://www.okkam.org/ontology_restaurant1.owl#Address">
-    <ontology_restaurant2:name>
+    <ontology_restaurant2:phone_number>
       <owl:Class rdf:about="http://www.okkam.org/ontology_restaurant1.owl#Location"/>
-    </ontology_restaurant2:name>
+    </ontology_restaurant2:phone_number>
   </owl:Class>
   <owl:Class rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Location">
     <rdfs:comment>The class of geographical locations</rdfs:comment>
@@ -85,13 +85,13 @@
   <owl:DatatypeProperty rdf:about="http://www.okkam.org/ontology_restaurant1.owl#name">
     <rdfs:domain>
       <owl:Class>
-        <ontology_restaurant2:name rdf:parseType="Resource">
+        <ontology_restaurant2:phone_number rdf:parseType="Resource">
           <rdf:first rdf:resource="http://www.okkam.org/ontology_restaurant1.owl#City"/>
-          <ontology_restaurant2:name rdf:parseType="Resource">
+          <ontology_restaurant2:phone_number rdf:parseType="Resource">
             <rdf:first rdf:resource="http://www.okkam.org/ontology_restaurant1.owl#Restaurant"/>
-            <ontology_restaurant2:name rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-          </ontology_restaurant2:name>
-        </ontology_restaurant2:name>
+            <ontology_restaurant2:phone_number rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </ontology_restaurant2:phone_number>
+        </ontology_restaurant2:phone_number>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
