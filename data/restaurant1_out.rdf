@@ -16,9 +16,9 @@
     <rdfs:comment>The class of restaurant</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://www.okkam.org/ontology_restaurant1.owl#Address">
-    <ontology_restaurant2:phone_number>
+    <rdfs:subClassOf>
       <owl:Class rdf:about="http://www.okkam.org/ontology_restaurant1.owl#Location"/>
-    </ontology_restaurant2:phone_number>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Location">
     <rdfs:comment>The class of geographical locations</rdfs:comment>
@@ -85,13 +85,10 @@
   <owl:DatatypeProperty rdf:about="http://www.okkam.org/ontology_restaurant1.owl#name">
     <rdfs:domain>
       <owl:Class>
-        <ontology_restaurant2:phone_number rdf:parseType="Resource">
-          <rdf:first rdf:resource="http://www.okkam.org/ontology_restaurant1.owl#City"/>
-          <ontology_restaurant2:phone_number rdf:parseType="Resource">
-            <rdf:first rdf:resource="http://www.okkam.org/ontology_restaurant1.owl#Restaurant"/>
-            <ontology_restaurant2:phone_number rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-          </ontology_restaurant2:phone_number>
-        </ontology_restaurant2:phone_number>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.okkam.org/ontology_restaurant1.owl#City"/>
+          <owl:Class rdf:about="http://www.okkam.org/ontology_restaurant1.owl#Restaurant"/>
+        </owl:intersectionOf>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -105,1071 +102,1143 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant89">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category0">
+        <ontology_restaurant2:name>ext 6108 international</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>404/237-2700</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>cafe  ritz-carlton  buckhead</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address89">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City89"/>
-        <j.0:street>3434 peachtree rd.</j.0:street>
+        <ontology_restaurant2:street>3434 peachtree rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>ext 6108 international</j.0:category>
-    <j.0:phone_number>404/237-2700</j.0:phone_number>
-    <j.0:name>cafe  ritz-carlton  buckhead</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant53">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category1">
+        <ontology_restaurant2:name>mediterranean</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/724-8585</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>picholine</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address53">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City53"/>
-        <j.0:street>35 w. 64th st.</j.0:street>
+        <ontology_restaurant2:street>35 w. 64th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>mediterranean</j.0:category>
-    <j.0:phone_number>212/724-8585</j.0:phone_number>
-    <j.0:name>picholine</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant41">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category2">
+        <ontology_restaurant2:name>french</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/489-1515</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>le bernardin</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address41">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City41"/>
-        <j.0:street>155 w. 51st st.</j.0:street>
+        <ontology_restaurant2:street>155 w. 51st st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/489-1515</j.0:phone_number>
-    <j.0:name>le bernardin</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant77">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>404/266-1440</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>brasserie le coze</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address77">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City77"/>
-        <j.0:street>3393 peachtree rd.  lenox square mall  near neiman marcus</j.0:street>
+        <ontology_restaurant2:street>3393 peachtree rd.  lenox square mall  near neiman marcus</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>404/266-1440</j.0:phone_number>
-    <j.0:name>brasserie le coze</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant65">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category3">
+        <ontology_restaurant2:name>american</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/243-4020</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>union square cafe</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address65">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City65"/>
-        <j.0:street>21 e. 16th st.</j.0:street>
+        <ontology_restaurant2:street>21 e. 16th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/243-4020</j.0:phone_number>
-    <j.0:name>union square cafe</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant40">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>212/688-6525</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>la cote basque</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address40">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City40"/>
-        <j.0:street>60 w. 55th st.  between 5th and 6th ave.</j.0:street>
+        <ontology_restaurant2:street>60 w. 55th st.  between 5th and 6th ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/688-6525</j.0:phone_number>
-    <j.0:name>la cote basque</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant64">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category1"/>
+    <ontology_restaurant2:phone_number>212/315-1726</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>uncle nick's</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address64">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City64"/>
-        <j.0:street>747 9th ave.  between 50th and 51st sts.</j.0:street>
+        <ontology_restaurant2:street>747 9th ave.  between 50th and 51st sts.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>mediterranean</j.0:category>
-    <j.0:phone_number>212/315-1726</j.0:phone_number>
-    <j.0:name>uncle nick's</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant52">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>212/245-2214</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>petrossian</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address52">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City52"/>
-        <j.0:street>182 w. 58th st.</j.0:street>
+        <ontology_restaurant2:street>182 w. 58th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/245-2214</j.0:phone_number>
-    <j.0:name>petrossian</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant88">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category4">
+        <ontology_restaurant2:name>international</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>404/261-3662</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>pano's and paul's</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address88">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City88"/>
-        <j.0:street>1232 w. paces ferry rd.</j.0:street>
+        <ontology_restaurant2:street>1232 w. paces ferry rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>international</j.0:category>
-    <j.0:phone_number>404/261-3662</j.0:phone_number>
-    <j.0:name>pano's and paul's</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant76">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>404/237-2663</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>bone's</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address76">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City76"/>
-        <j.0:street>3130 piedmont road</j.0:street>
+        <ontology_restaurant2:street>3130 piedmont road</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>404/237-2663</j.0:phone_number>
-    <j.0:name>bone's</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant79">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>404/874-7600</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>ciboulette</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address79">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City79"/>
-        <j.0:street>1529 piedmont ave.</j.0:street>
+        <ontology_restaurant2:street>1529 piedmont ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>404/874-7600</j.0:phone_number>
-    <j.0:name>ciboulette</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant67">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category5">
+        <ontology_restaurant2:name>asian</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>702/733-8899</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>chin's</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address67">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City67"/>
-        <j.0:street>3200 las vegas blvd. s</j.0:street>
+        <ontology_restaurant2:street>3200 las vegas blvd. s</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>702/733-8899</j.0:phone_number>
-    <j.0:name>chin's</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant110">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>415/296-7465</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>ritz-carlton restaurant and dining room</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address110">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City110"/>
-        <j.0:street>600 stockton st.</j.0:street>
+        <ontology_restaurant2:street>600 stockton st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>415/296-7465</j.0:phone_number>
-    <j.0:name>ritz-carlton restaurant and dining room</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant111">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category6">
+        <ontology_restaurant2:name>italian</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>415/399-0499</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>rose pistola</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address111">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City111"/>
-        <j.0:street>532 columbus ave.</j.0:street>
+        <ontology_restaurant2:street>532 columbus ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>415/399-0499</j.0:phone_number>
-    <j.0:name>rose pistola</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant31">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>212/288-0033</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>daniel</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address31">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City31"/>
-        <j.0:street>20 e. 76th st.</j.0:street>
+        <ontology_restaurant2:street>20 e. 76th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/288-0033</j.0:phone_number>
-    <j.0:name>daniel</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant55">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category7">
+        <ontology_restaurant2:name>or 212/632-5100 american</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/632-5000</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>rainbow room</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address55">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City55"/>
-        <j.0:street>30 rockefeller plaza</j.0:street>
+        <ontology_restaurant2:street>30 rockefeller plaza</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>or 212/632-5100 american</j.0:category>
-    <j.0:phone_number>212/632-5000</j.0:phone_number>
-    <j.0:name>rainbow room</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant43">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/339-6719</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>lespinasse</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address43">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City43"/>
-        <j.0:street>2 e. 55th st.</j.0:street>
+        <ontology_restaurant2:street>2 e. 55th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/339-6719</j.0:phone_number>
-    <j.0:name>lespinasse</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant78">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>404/262-3336</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>buckhead diner</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address78">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City78"/>
-        <j.0:street>3073 piedmont road</j.0:street>
+        <ontology_restaurant2:street>3073 piedmont road</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>404/262-3336</j.0:phone_number>
-    <j.0:name>buckhead diner</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant42">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>212/484-5113</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>les celebrites</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address42">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City42"/>
-        <j.0:street>160 central park s</j.0:street>
+        <ontology_restaurant2:street>160 central park s</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/484-5113</j.0:phone_number>
-    <j.0:name>les celebrites</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant30">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/966-6960</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>chanterelle</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address30">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City30"/>
-        <j.0:street>2 harrison st.  near hudson st.</j.0:street>
+        <ontology_restaurant2:street>2 harrison st.  near hudson st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/966-6960</j.0:phone_number>
-    <j.0:name>chanterelle</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant66">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/ 921-9494</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>virgil's</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address66">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City66"/>
-        <j.0:street>152 w. 44th st.</j.0:street>
+        <ontology_restaurant2:street>152 w. 44th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/ 921-9494</j.0:phone_number>
-    <j.0:name>virgil's</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant54">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category8">
+        <ontology_restaurant2:name>seafood</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/260-6660</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>pisces</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address54">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City54"/>
-        <j.0:street>95 ave. a at 6th st.</j.0:street>
+        <ontology_restaurant2:street>95 ave. a at 6th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>seafood</j.0:category>
-    <j.0:phone_number>212/260-6660</j.0:phone_number>
-    <j.0:name>pisces</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant57">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>212/265-5959</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>san domenico</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address57">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City57"/>
-        <j.0:street>240 central park s</j.0:street>
+        <ontology_restaurant2:street>240 central park s</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>212/265-5959</j.0:phone_number>
-    <j.0:name>san domenico</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant45">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category8"/>
+    <ontology_restaurant2:phone_number>212/ 371-7777</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>manhattan ocean club</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address45">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City45"/>
-        <j.0:street>57 w. 58th st.</j.0:street>
+        <ontology_restaurant2:street>57 w. 58th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>seafood</j.0:category>
-    <j.0:phone_number>212/ 371-7777</j.0:phone_number>
-    <j.0:name>manhattan ocean club</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant2">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category9">
+        <ontology_restaurant2:name>californian</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>310/472-1211</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>hotel bel-air</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address2">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City2"/>
-        <j.0:street>701 stone canyon rd.</j.0:street>
+        <ontology_restaurant2:street>701 stone canyon rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>californian</j.0:category>
-    <j.0:phone_number>310/472-1211</j.0:phone_number>
-    <j.0:name>hotel bel-air</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant69">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category10">
+        <ontology_restaurant2:name>continental</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>702/732-5111</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>le montrachet</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address69">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City69"/>
-        <j.0:street>3000 w. paradise rd.</j.0:street>
+        <ontology_restaurant2:street>3000 w. paradise rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>continental</j.0:category>
-    <j.0:phone_number>702/732-5111</j.0:phone_number>
-    <j.0:name>le montrachet</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant33">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>212/758-1479</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>felidia</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address33">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City33"/>
-        <j.0:street>243 e. 58th st.</j.0:street>
+        <ontology_restaurant2:street>243 e. 58th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>212/758-1479</j.0:phone_number>
-    <j.0:name>felidia</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant21">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>310/829-4313</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>valentino</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address21">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City21"/>
-        <j.0:street>3115 pico blvd.</j.0:street>
+        <ontology_restaurant2:street>3115 pico blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>310/829-4313</j.0:phone_number>
-    <j.0:name>valentino</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant109">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>415/776-7825</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>postrio</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address109">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City109"/>
-        <j.0:street>545 post st.</j.0:street>
+        <ontology_restaurant2:street>545 post st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>415/776-7825</j.0:phone_number>
-    <j.0:name>postrio</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant68">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category11">
+        <ontology_restaurant2:name>southwestern</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>702/891-7349</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>coyote cafe</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address68">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City68"/>
-        <j.0:street>3799 las vegas blvd. s</j.0:street>
+        <ontology_restaurant2:street>3799 las vegas blvd. s</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>southwestern</j.0:category>
-    <j.0:phone_number>702/891-7349</j.0:phone_number>
-    <j.0:name>coyote cafe</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant56">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>718/522-5200</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>river cafe</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address56">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City56"/>
-        <j.0:street>1 water st. at the east river</j.0:street>
+        <ontology_restaurant2:street>1 water st. at the east river</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>718/522-5200</j.0:phone_number>
-    <j.0:name>river cafe</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant1">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>818/762-1221</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>art's delicatessen</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address1">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City1"/>
-        <j.0:street>12224 ventura blvd.</j.0:street>
+        <ontology_restaurant2:street>12224 ventura blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>818/762-1221</j.0:phone_number>
-    <j.0:name>art's delicatessen</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant20">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category9"/>
+    <ontology_restaurant2:phone_number>310/652-4025</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>spago</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address20">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City20"/>
-        <j.0:street>1114 horn ave.</j.0:street>
+        <ontology_restaurant2:street>1114 horn ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>californian</j.0:category>
-    <j.0:phone_number>310/652-4025</j.0:phone_number>
-    <j.0:name>spago</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant0">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>310/246-1501</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>arnie morton's of chicago</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address0">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City0"/>
-        <j.0:street>435 s. la cienega blv.</j.0:street>
+        <ontology_restaurant2:street>435 s. la cienega blv.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>310/246-1501</j.0:phone_number>
-    <j.0:name>arnie morton's of chicago</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant44">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>212/752-2225</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>lutece</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address44">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City44"/>
-        <j.0:street>249 e. 50th st.</j.0:street>
+        <ontology_restaurant2:street>249 e. 50th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/752-2225</j.0:phone_number>
-    <j.0:name>lutece</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant32">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>212/355-7555</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>dawat</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address32">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City32"/>
-        <j.0:street>210 e. 58th st.</j.0:street>
+        <ontology_restaurant2:street>210 e. 58th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>212/355-7555</j.0:phone_number>
-    <j.0:name>dawat</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant108">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category1"/>
+    <ontology_restaurant2:phone_number>415/563-4755</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>plumpjack cafe</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address108">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City108"/>
-        <j.0:street>3201 fillmore st.</j.0:street>
+        <ontology_restaurant2:street>3201 fillmore st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>mediterranean</j.0:category>
-    <j.0:phone_number>415/563-4755</j.0:phone_number>
-    <j.0:name>plumpjack cafe</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant35">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/620-4020</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>gotham bar &amp; grill</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address35">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City35"/>
-        <j.0:street>12 e. 12th st.</j.0:street>
+        <ontology_restaurant2:street>12 e. 12th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/620-4020</j.0:phone_number>
-    <j.0:name>gotham bar &amp; grill</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant23">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/582-7200</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>21 club</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address23">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City23"/>
-        <j.0:street>21 w. 52nd st.</j.0:street>
+        <ontology_restaurant2:street>21 w. 52nd st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/582-7200</j.0:phone_number>
-    <j.0:name>21 club</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant59">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>212/980-9393</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>seryna</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address59">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City59"/>
-        <j.0:street>11 e. 53rd st.</j.0:street>
+        <ontology_restaurant2:street>11 e. 53rd st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>212/980-9393</j.0:phone_number>
-    <j.0:name>seryna</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant47">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/807-7400</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>mesa grill</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address47">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City47"/>
-        <j.0:street>102 5th ave.  between 15th and 16th sts.</j.0:street>
+        <ontology_restaurant2:street>102 5th ave.  between 15th and 16th sts.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/807-7400</j.0:phone_number>
-    <j.0:name>mesa grill</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant11">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>310/652-9770</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>l'orangerie</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address11">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City11"/>
-        <j.0:street>903 n. la cienega blvd.</j.0:street>
+        <ontology_restaurant2:street>903 n. la cienega blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>310/652-9770</j.0:phone_number>
-    <j.0:name>l'orangerie</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant91">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category10"/>
+    <ontology_restaurant2:phone_number>404/659-0400</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>restaurant  ritz-carlton  atlanta</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address91">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City91"/>
-        <j.0:street>181 peachtree st.</j.0:street>
+        <ontology_restaurant2:street>181 peachtree st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>continental</j.0:category>
-    <j.0:phone_number>404/659-0400</j.0:phone_number>
-    <j.0:name>restaurant  ritz-carlton  atlanta</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant46">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/754-6272</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>march</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address46">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City46"/>
-        <j.0:street>405 e. 58th st.</j.0:street>
+        <ontology_restaurant2:street>405 e. 58th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/754-6272</j.0:phone_number>
-    <j.0:name>march</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant34">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/754-9494</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>four seasons grill room</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address34">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City34"/>
-        <j.0:street>99 e. 52nd st.</j.0:street>
+        <ontology_restaurant2:street>99 e. 52nd st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/754-9494</j.0:phone_number>
-    <j.0:name>four seasons grill room</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant58">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category12">
+        <ontology_restaurant2:name>delicatessen</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/677-0606</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>second avenue deli</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address58">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City58"/>
-        <j.0:street>156 2nd ave. at 10th st.</j.0:street>
+        <ontology_restaurant2:street>156 2nd ave. at 10th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>delicatessen</j.0:category>
-    <j.0:phone_number>212/677-0606</j.0:phone_number>
-    <j.0:name>second avenue deli</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant22">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>818/585-0855</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>yujean kang's gourmet chinese cuisine</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address22">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City22"/>
-        <j.0:street>67 n. raymond ave.</j.0:street>
+        <ontology_restaurant2:street>67 n. raymond ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>818/585-0855</j.0:phone_number>
-    <j.0:name>yujean kang's gourmet chinese cuisine</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant10">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>213/665-1891</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>restaurant katsu</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address10">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City10"/>
-        <j.0:street>1972 n. hillhurst ave.</j.0:street>
+        <ontology_restaurant2:street>1972 n. hillhurst ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>213/665-1891</j.0:phone_number>
-    <j.0:name>restaurant katsu</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant90">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category4"/>
+    <ontology_restaurant2:phone_number>404/237-2700</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>dining room  ritz-carlton  buckhead</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address90">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City90"/>
-        <j.0:street>3434 peachtree rd.</j.0:street>
+        <ontology_restaurant2:street>3434 peachtree rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>international</j.0:category>
-    <j.0:phone_number>404/237-2700</j.0:phone_number>
-    <j.0:name>dining room  ritz-carlton  buckhead</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant13">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>310/274-1893</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>locanda veneta</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address13">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City13"/>
-        <j.0:street>3rd st.</j.0:street>
+        <ontology_restaurant2:street>3rd st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>310/274-1893</j.0:phone_number>
-    <j.0:name>locanda veneta</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant37">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category13">
+        <ontology_restaurant2:name>tel caribbean</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/765-1737</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>island spice</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address37">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City37"/>
-        <j.0:street>402 w. 44th st.</j.0:street>
+        <ontology_restaurant2:street>402 w. 44th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>tel caribbean</j.0:category>
-    <j.0:phone_number>212/765-1737</j.0:phone_number>
-    <j.0:name>island spice</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant25">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/ 319-1660</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>aureole</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address25">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City25"/>
-        <j.0:street>34 e. 61st st.</j.0:street>
+        <ontology_restaurant2:street>34 e. 61st st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/ 319-1660</j.0:phone_number>
-    <j.0:name>aureole</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant49">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>212/ 219-2777</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>montrachet</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address49">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City49"/>
-        <j.0:street>239 w. broadway  between walker and white sts.</j.0:street>
+        <ontology_restaurant2:street>239 w. broadway  between walker and white sts.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/ 219-2777</j.0:phone_number>
-    <j.0:name>montrachet</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant6">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category9"/>
+    <ontology_restaurant2:phone_number>213/857-0034</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>citrus</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address6">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City6"/>
-        <j.0:street>6703 melrose ave.</j.0:street>
+        <ontology_restaurant2:street>6703 melrose ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>californian</j.0:category>
-    <j.0:phone_number>213/857-0034</j.0:phone_number>
-    <j.0:name>citrus</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant93">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>404/875-8424</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>veni vidi vici</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address93">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City93"/>
-        <j.0:street>41 14th st.</j.0:street>
+        <ontology_restaurant2:street>41 14th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>404/875-8424</j.0:phone_number>
-    <j.0:name>veni vidi vici</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant81">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>404/352-3517</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>georgia grille</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address81">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City81"/>
-        <j.0:street>2290 peachtree rd.  peachtree square shopping center</j.0:street>
+        <ontology_restaurant2:street>2290 peachtree rd.  peachtree square shopping center</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>404/352-3517</j.0:phone_number>
-    <j.0:name>georgia grille</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant105">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category1"/>
+    <ontology_restaurant2:phone_number>415/495-5775</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>lulu</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address105">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City105"/>
-        <j.0:street>816 folsom st.</j.0:street>
+        <ontology_restaurant2:street>816 folsom st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>mediterranean</j.0:category>
-    <j.0:phone_number>415/495-5775</j.0:phone_number>
-    <j.0:name>lulu</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant24">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category10"/>
+    <ontology_restaurant2:phone_number>212/307-7311</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>aquavit</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address24">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City24"/>
-        <j.0:street>13 w. 54th st.</j.0:street>
+        <ontology_restaurant2:street>13 w. 54th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>continental</j.0:category>
-    <j.0:phone_number>212/307-7311</j.0:phone_number>
-    <j.0:name>aquavit</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant12">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>213/655-8880</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>le chardonnay</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address12">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City12"/>
-        <j.0:street>8284 melrose ave.</j.0:street>
+        <ontology_restaurant2:street>8284 melrose ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>213/655-8880</j.0:phone_number>
-    <j.0:name>le chardonnay</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant48">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category14">
+        <ontology_restaurant2:name>mexican</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/627-8273</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>mi cocina</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address48">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City48"/>
-        <j.0:street>57 jane st.  off hudson st.</j.0:street>
+        <ontology_restaurant2:street>57 jane st.  off hudson st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>mexican</j.0:category>
-    <j.0:phone_number>212/627-8273</j.0:phone_number>
-    <j.0:name>mi cocina</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant36">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/477-0777</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>gramercy tavern</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address36">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City36"/>
-        <j.0:street>42 e. 20th st.  between park ave. s and broadway</j.0:street>
+        <ontology_restaurant2:street>42 e. 20th st.  between park ave. s and broadway</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/477-0777</j.0:phone_number>
-    <j.0:name>gramercy tavern</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant5">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>310/392-9025</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>chinois on main</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address5">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City5"/>
-        <j.0:street>2709 main st.</j.0:street>
+        <ontology_restaurant2:street>2709 main st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>310/392-9025</j.0:phone_number>
-    <j.0:name>chinois on main</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant92">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>404/351-9533</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>toulouse</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address92">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City92"/>
-        <j.0:street>b peachtree rd.</j.0:street>
+        <ontology_restaurant2:street>b peachtree rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>404/351-9533</j.0:phone_number>
-    <j.0:name>toulouse</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant104">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>415/776-5577</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>la folie</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address104">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City104"/>
-        <j.0:street>2316 polk st.</j.0:street>
+        <ontology_restaurant2:street>2316 polk st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>415/776-5577</j.0:phone_number>
-    <j.0:name>la folie</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant80">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>404/681-2909</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>delectables</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address80">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City80"/>
-        <j.0:street>1 margaret mitchell sq.</j.0:street>
+        <ontology_restaurant2:street>1 margaret mitchell sq.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>404/681-2909</j.0:phone_number>
-    <j.0:name>delectables</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant4">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>213/938-1447</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>campanile</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address4">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City4"/>
-        <j.0:street>624 s. la brea ave.</j.0:street>
+        <ontology_restaurant2:street>624 s. la brea ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>213/938-1447</j.0:phone_number>
-    <j.0:name>campanile</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant15">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>310/550-8811</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>the palm</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address15">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City15"/>
-        <j.0:street>9001 santa monica blvd.</j.0:street>
+        <ontology_restaurant2:street>9001 santa monica blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>310/550-8811</j.0:phone_number>
-    <j.0:name>the palm</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant39">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>212/586-4252</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>la caravelle</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address39">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City39"/>
-        <j.0:street>33 w. 55th st.</j.0:street>
+        <ontology_restaurant2:street>33 w. 55th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>212/586-4252</j.0:phone_number>
-    <j.0:name>la caravelle</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant27">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category10"/>
+    <ontology_restaurant2:phone_number>212/877-3500</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>cafe des artistes</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address27">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City27"/>
-        <j.0:street>1 w. 67th st.</j.0:street>
+        <ontology_restaurant2:street>1 w. 67th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>continental</j.0:category>
-    <j.0:phone_number>212/877-3500</j.0:phone_number>
-    <j.0:name>cafe des artistes</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant71">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category8"/>
+    <ontology_restaurant2:phone_number>702/385-3232</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>second street grille</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address71">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City71"/>
-        <j.0:street>200 e. fremont st.</j.0:street>
+        <ontology_restaurant2:street>200 e. fremont st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>seafood</j.0:category>
-    <j.0:phone_number>702/385-3232</j.0:phone_number>
-    <j.0:name>second street grille</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant95">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category8"/>
+    <ontology_restaurant2:phone_number>415/956-9662</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>aqua</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address95">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City95"/>
-        <j.0:street>252 california st.</j.0:street>
+        <ontology_restaurant2:street>252 california st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>seafood</j.0:category>
-    <j.0:phone_number>415/956-9662</j.0:phone_number>
-    <j.0:name>aqua</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant83">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>404/876-4408</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>heera of india</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address83">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City83"/>
-        <j.0:street>595 piedmont ave.  rio shopping mall</j.0:street>
+        <ontology_restaurant2:street>595 piedmont ave.  rio shopping mall</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>404/876-4408</j.0:phone_number>
-    <j.0:name>heera of india</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant107">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>415/922-0337</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>mifune japan center  kintetsu building</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address107">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City107"/>
-        <j.0:street>1737 post st.</j.0:street>
+        <ontology_restaurant2:street>1737 post st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>415/922-0337</j.0:phone_number>
-    <j.0:name>mifune japan center  kintetsu building</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant3">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>818/788-3536</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>cafe bizou</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address3">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City3"/>
-        <j.0:street>14016 ventura blvd.</j.0:street>
+        <ontology_restaurant2:street>14016 ventura blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>818/788-3536</j.0:phone_number>
-    <j.0:name>cafe bizou</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant26">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category15">
+        <ontology_restaurant2:name>coffee bar</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>212/496-6031</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>cafe lalo</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address26">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City26"/>
-        <j.0:street>201 w. 83rd st.</j.0:street>
+        <ontology_restaurant2:street>201 w. 83rd st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>coffee bar</j.0:category>
-    <j.0:phone_number>212/496-6031</j.0:phone_number>
-    <j.0:name>cafe lalo</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant14">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>310/659-9639</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>matsuhisa</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address14">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City14"/>
-        <j.0:street>129 n. la cienega blvd.</j.0:street>
+        <ontology_restaurant2:street>129 n. la cienega blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>310/659-9639</j.0:phone_number>
-    <j.0:name>matsuhisa</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant38">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/223-5656</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>jo jo</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address38">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City38"/>
-        <j.0:street>160 e. 64th st.</j.0:street>
+        <ontology_restaurant2:street>160 e. 64th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/223-5656</j.0:phone_number>
-    <j.0:name>jo jo</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant82">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category4"/>
+    <ontology_restaurant2:phone_number>404/233-7673</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>hedgerose heights inn</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address82">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City82"/>
-        <j.0:street>490 e. paces ferry rd.</j.0:street>
+        <ontology_restaurant2:street>490 e. paces ferry rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>international</j.0:category>
-    <j.0:phone_number>404/233-7673</j.0:phone_number>
-    <j.0:name>hedgerose heights inn</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant70">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category10"/>
+    <ontology_restaurant2:phone_number>702/731-7547</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>palace court</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address70">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City70"/>
-        <j.0:street>3570 las vegas blvd. s</j.0:street>
+        <ontology_restaurant2:street>3570 las vegas blvd. s</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>continental</j.0:category>
-    <j.0:phone_number>702/731-7547</j.0:phone_number>
-    <j.0:name>palace court</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant94">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>415/387-0408</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>alain rondelli</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address94">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City94"/>
-        <j.0:street>126 clement st.</j.0:street>
+        <ontology_restaurant2:street>126 clement st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>415/387-0408</j.0:phone_number>
-    <j.0:name>alain rondelli</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant106">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>415/989-7154</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>masa's</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address106">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City106"/>
-        <j.0:street>648 bush st.</j.0:street>
+        <ontology_restaurant2:street>648 bush st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>415/989-7154</j.0:phone_number>
-    <j.0:name>masa's</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant17">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>213/628-3781</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>philippe's the original</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address17">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City17"/>
-        <j.0:street>1001 n. alameda st.</j.0:street>
+        <ontology_restaurant2:street>1001 n. alameda st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>213/628-3781</j.0:phone_number>
-    <j.0:name>philippe's the original</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant29">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category12"/>
+    <ontology_restaurant2:phone_number>212/757-2245</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>carnegie deli</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address29">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City29"/>
-        <j.0:street>854 7th ave.  between 54th and 55th sts.</j.0:street>
+        <ontology_restaurant2:street>854 7th ave.  between 54th and 55th sts.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>delicatessen</j.0:category>
-    <j.0:phone_number>212/757-2245</j.0:phone_number>
-    <j.0:name>carnegie deli</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant101">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>415/543-0573</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>fringale</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address101">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City101"/>
-        <j.0:street>570 4th st.</j.0:street>
+        <ontology_restaurant2:street>570 4th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>415/543-0573</j.0:phone_number>
-    <j.0:name>fringale</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant73">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category8"/>
+    <ontology_restaurant2:phone_number>702/731-4036</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>tillerman</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address73">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City73"/>
-        <j.0:street>2245 e. flamingo rd.</j.0:street>
+        <ontology_restaurant2:street>2245 e. flamingo rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>seafood</j.0:category>
-    <j.0:phone_number>702/731-4036</j.0:phone_number>
-    <j.0:name>tillerman</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant61">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/861-8080</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>sign of the dove</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address61">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City61"/>
-        <j.0:street>1110 3rd ave. at 65th st.</j.0:street>
+        <ontology_restaurant2:street>1110 3rd ave. at 65th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/861-8080</j.0:phone_number>
-    <j.0:name>sign of the dove</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant97">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>415/392-3505</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>cafe claude</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address97">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City97"/>
-        <j.0:street>7 claude la.</j.0:street>
+        <ontology_restaurant2:street>7 claude la.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>415/392-3505</j.0:phone_number>
-    <j.0:name>cafe claude</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant85">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>404/231-1368</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>la grotta</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address85">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City85"/>
-        <j.0:street>2637 peachtree rd.  peachtree house condominium</j.0:street>
+        <ontology_restaurant2:street>2637 peachtree rd.  peachtree house condominium</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>404/231-1368</j.0:phone_number>
-    <j.0:name>la grotta</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant9">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>310/276-0615</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>grill on the alley</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address9">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City9"/>
-        <j.0:street>9560 dayton way</j.0:street>
+        <ontology_restaurant2:street>9560 dayton way</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>310/276-0615</j.0:phone_number>
-    <j.0:name>grill on the alley</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant28">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>212/362-2200</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>carmine's</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address28">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City28"/>
-        <j.0:street>2450 broadway  between 90th and 91st sts.</j.0:street>
+        <ontology_restaurant2:street>2450 broadway  between 90th and 91st sts.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>212/362-2200</j.0:phone_number>
-    <j.0:name>carmine's</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant16">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category9"/>
+    <ontology_restaurant2:phone_number>213/467-1108</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>patina</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address16">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City16"/>
-        <j.0:street>5955 melrose ave.</j.0:street>
+        <ontology_restaurant2:street>5955 melrose ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>californian</j.0:category>
-    <j.0:phone_number>213/467-1108</j.0:phone_number>
-    <j.0:name>patina</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant60">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>212/371-8844</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>shun lee west</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address60">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City60"/>
-        <j.0:street>43 w. 65th st.</j.0:street>
+        <ontology_restaurant2:street>43 w. 65th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>212/371-8844</j.0:phone_number>
-    <j.0:name>shun lee west</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant112">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>310/475-9807</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>adriano's ristorante</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address112">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City112"/>
-        <j.0:street>2930 beverly glen circle</j.0:street>
+        <ontology_restaurant2:street>2930 beverly glen circle</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>310/475-9807</j.0:phone_number>
-    <j.0:name>adriano's ristorante</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant100">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>415/673-7779</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>fleur de lys</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address100">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City100"/>
-        <j.0:street>777 sutter st.</j.0:street>
+        <ontology_restaurant2:street>777 sutter st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>415/673-7779</j.0:phone_number>
-    <j.0:name>fleur de lys</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant84">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category16">
+        <ontology_restaurant2:name>caribbean</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>404/876-0676</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>indigo coastal grill</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address84">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City84"/>
-        <j.0:street>1397 n. highland ave.</j.0:street>
+        <ontology_restaurant2:street>1397 n. highland ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>caribbean</j.0:category>
-    <j.0:phone_number>404/876-0676</j.0:phone_number>
-    <j.0:name>indigo coastal grill</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant72">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category17">
+        <ontology_restaurant2:name>steak houses</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>702/734-0410</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>steak house</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address72">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City72"/>
-        <j.0:street>2880 las vegas blvd. s</j.0:street>
+        <ontology_restaurant2:street>2880 las vegas blvd. s</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>steak houses</j.0:category>
-    <j.0:phone_number>702/734-0410</j.0:phone_number>
-    <j.0:name>steak house</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant96">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>415/543-6084</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>boulevard</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address96">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City96"/>
-        <j.0:street>1 mission st.</j.0:street>
+        <ontology_restaurant2:street>1 mission st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>415/543-6084</j.0:phone_number>
-    <j.0:name>boulevard</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <owl:IrreflexiveProperty rdf:about="http://www.okkam.org/ontology_restaurant2.owl#has_address">
     <rdfs:range rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Address"/>
@@ -1178,179 +1247,183 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:IrreflexiveProperty>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant8">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category9"/>
+    <ontology_restaurant2:phone_number>310/456-0488</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>granita</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address8">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City8"/>
-        <j.0:street>23725 w. malibu rd.</j.0:street>
+        <ontology_restaurant2:street>23725 w. malibu rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>californian</j.0:category>
-    <j.0:phone_number>310/456-0488</j.0:phone_number>
-    <j.0:name>granita</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant19">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>213/627-2300</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>rex il ristorante</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address19">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City19"/>
-        <j.0:street>617 s. olive st.</j.0:street>
+        <ontology_restaurant2:street>617 s. olive st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>213/627-2300</j.0:phone_number>
-    <j.0:name>rex il ristorante</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant51">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/644-1900</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>park avenue cafe</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address51">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City51"/>
-        <j.0:street>100 e. 63rd st.</j.0:street>
+        <ontology_restaurant2:street>100 e. 63rd st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/644-1900</j.0:phone_number>
-    <j.0:name>park avenue cafe</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant103">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category5"/>
+    <ontology_restaurant2:phone_number>415/668-6654</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>khan toke thai house</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address103">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City103"/>
-        <j.0:street>5937 geary blvd.</j.0:street>
+        <ontology_restaurant2:street>5937 geary blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>asian</j.0:category>
-    <j.0:phone_number>415/668-6654</j.0:phone_number>
-    <j.0:name>khan toke thai house</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant75">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category4"/>
+    <ontology_restaurant2:phone_number>404/365-0410</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>bacchanalia</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address75">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City75"/>
-        <j.0:street>3125 piedmont rd.  near peachtree rd.</j.0:street>
+        <ontology_restaurant2:street>3125 piedmont rd.  near peachtree rd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>international</j.0:category>
-    <j.0:phone_number>404/365-0410</j.0:phone_number>
-    <j.0:name>bacchanalia</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant63">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/873-3200</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>tavern on the green</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address63">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City63"/>
-        <j.0:street>in central park at 67th st.</j.0:street>
+        <ontology_restaurant2:street>in central park at 67th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/873-3200</j.0:phone_number>
-    <j.0:name>tavern on the green</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant99">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>415/775-7036</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>chez michel</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address99">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City99"/>
-        <j.0:street>804 northpoint</j.0:street>
+        <ontology_restaurant2:street>804 northpoint</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>415/775-7036</j.0:phone_number>
-    <j.0:name>chez michel</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant87">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category10"/>
+    <ontology_restaurant2:phone_number>404/221-6362</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>nikolai's roof</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address87">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City87"/>
-        <j.0:street>255 courtland st.  at harris st.</j.0:street>
+        <ontology_restaurant2:street>255 courtland st.  at harris st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>continental</j.0:category>
-    <j.0:phone_number>404/221-6362</j.0:phone_number>
-    <j.0:name>nikolai's roof</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant7">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>213/848-6677</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>fenix</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address7">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City7"/>
-        <j.0:street>8358 sunset blvd. west</j.0:street>
+        <ontology_restaurant2:street>8358 sunset blvd. west</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>213/848-6677</j.0:phone_number>
-    <j.0:name>fenix</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant18">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category2"/>
+    <ontology_restaurant2:phone_number>818/990-0500</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>pinot bistro</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address18">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City18"/>
-        <j.0:street>12969 ventura blvd.</j.0:street>
+        <ontology_restaurant2:street>12969 ventura blvd.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>french</j.0:category>
-    <j.0:phone_number>818/990-0500</j.0:phone_number>
-    <j.0:name>pinot bistro</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant62">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>212/753-1530</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>smith &amp; wollensky</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address62">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City62"/>
-        <j.0:street>201 e. 49th st.</j.0:street>
+        <ontology_restaurant2:street>201 e. 49th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>212/753-1530</j.0:phone_number>
-    <j.0:name>smith &amp; wollensky</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant50">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category8"/>
+    <ontology_restaurant2:phone_number>212/759-5941</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>oceana</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address50">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City50"/>
-        <j.0:street>55 e. 54th st.</j.0:street>
+        <ontology_restaurant2:street>55 e. 54th st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>seafood</j.0:category>
-    <j.0:phone_number>212/759-5941</j.0:phone_number>
-    <j.0:name>oceana</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant102">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>415/777-9779</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>hawthorne lane</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address102">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City102"/>
-        <j.0:street>22 hawthorne st.</j.0:street>
+        <ontology_restaurant2:street>22 hawthorne st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>415/777-9779</j.0:phone_number>
-    <j.0:name>hawthorne lane</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant86">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category>
+      <ontology_restaurant2:Category rdf:about="http://www.okkam.org/ontology_restaurant2.owl#Category18">
+        <ontology_restaurant2:name>southern</ontology_restaurant2:name>
+      </ontology_restaurant2:Category>
+    </ontology_restaurant2:has_category>
+    <ontology_restaurant2:phone_number>404/876-1800</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>mary mac's tea room</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address86">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City86"/>
-        <j.0:street>224 ponce de leon ave.</j.0:street>
+        <ontology_restaurant2:street>224 ponce de leon ave.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>southern</j.0:category>
-    <j.0:phone_number>404/876-1800</j.0:phone_number>
-    <j.0:name>mary mac's tea room</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant74">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category6"/>
+    <ontology_restaurant2:phone_number>404/261-8186</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>abruzzi</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address74">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City74"/>
-        <j.0:street>2355 peachtree rd.  peachtree battle shopping center</j.0:street>
+        <ontology_restaurant2:street>2355 peachtree rd.  peachtree battle shopping center</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>italian</j.0:category>
-    <j.0:phone_number>404/261-8186</j.0:phone_number>
-    <j.0:name>abruzzi</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
   <j.0:Restaurant rdf:about="http://www.okkam.org/oaie/restaurant1-Restaurant98">
-    <j.0:has_address>
+    <ontology_restaurant2:has_category rdf:resource="http://www.okkam.org/ontology_restaurant2.owl#Category3"/>
+    <ontology_restaurant2:phone_number>415/955-5555</ontology_restaurant2:phone_number>
+    <ontology_restaurant2:name>campton place</ontology_restaurant2:name>
+    <ontology_restaurant2:has_address>
       <j.0:Address rdf:about="http://www.okkam.org/oaie/restaurant1-Address98">
-        <j.0:is_in_city rdf:resource="http://www.okkam.org/oaie/restaurant1-City98"/>
-        <j.0:street>340 stockton st.</j.0:street>
+        <ontology_restaurant2:street>340 stockton st.</ontology_restaurant2:street>
+        <ontology_restaurant2:city>http://www.okkam.org/ontology_restaurant2.owl#city</ontology_restaurant2:city>
       </j.0:Address>
-    </j.0:has_address>
-    <j.0:category>american</j.0:category>
-    <j.0:phone_number>415/955-5555</j.0:phone_number>
-    <j.0:name>campton place</j.0:name>
+    </ontology_restaurant2:has_address>
   </j.0:Restaurant>
 </rdf:RDF>

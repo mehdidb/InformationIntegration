@@ -269,6 +269,24 @@ public class Main {
         return ret;
     }
 
+    private static HashSet<String> generateEntitiesN1(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s) {
+        HashSet<String> ret = new HashSet<>();
+        for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
+            HashSet<String> hs1 = new HashSet<>();
+            HashSet<String> hs2 = new HashSet<>();
+
+            p.getLeft().forEach(st -> hs1.add((st.getPredicate()).toString()));
+            p.getRight().forEach(st -> hs2.add((st.getPredicate()).toString()));
+
+            if (hs1.size() > 1 && hs2.size() == 1) {
+                //System.out.println("Test 1");
+                ret.add(p.getLeft().iterator().next().getObject().toString());
+            }
+        }
+
+        return ret;
+    }
+
     private static Pair<HashSet<Statement>, HashSet<Statement>> getMappedURI(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set, String hs) {
         for (Pair<HashSet<Statement>, HashSet<Statement>> p : set) {
             for (Statement i : p.getLeft()) {
@@ -322,6 +340,11 @@ public class Main {
          */
         entities1N = generateEntities1N(set);
 
+        /*
+         Generate all N..1 entities
+         */
+        entitiesN1 = generateEntitiesN1(set);
+        //System.out.println(entitiesN1);
         OntModel m1 = getOntologyModel(ONT_1_OWL);
         OntModel m = getOntologyModel(ONT_2_OWL);
         //printClasses(m);
@@ -354,29 +377,21 @@ public class Main {
                     properties = r.listProperties();
                 }
 
-                /*
-                 * N..1 Case
-                 */
-                /*
-                if (false && p.getPredicate().toString().contains("is_in_city")) {
-                    prd = ResourceFactory.createProperty("http://www.okkam.org/ontology_restaurant2.owl#city");
-                    Resource rs1 = model1.getResource(p.getObject().toString());
-                    StmtIterator prop = rs1.listProperties();
-                    while (prop.hasNext()) {
-                        Statement a = prop.nextStatement();
-                        if (a.getPredicate().toString().contains("name")) {
-                            obj = ResourceFactory.createStringLiteral(model1.getResource(a.getObject().toString()).toString());//model1.createTypedLiteral();
-                        }
-                        model1 = model1.remove(a);
-                        prop = rs1.listProperties();
+                //N..1 Case
+                if (entitiesN1.contains(p.getPredicate().toString())) {
+                    Pair<HashSet<Statement>, HashSet<Statement>> pp = getMappedURI(set, prd.toString());
+                    System.out.println("Predicat :" + prd);
+                    for (Statement st : pp.getRight()) {
+                        String stringifiedObject = st.getObject().toString();
+                        Property prd1 = ResourceFactory.createProperty(stringifiedObject);
+                        obj = ResourceFactory.createStringLiteral(model1.getResource(stringifiedObject).toString());//
+                        Statement s = ResourceFactory.createStatement(sub, prd1, obj);
+                        System.out.println(s);
+                        model1 = model1.remove(p);
+                        model1 = model1.add(s);
+                        properties = r.listProperties();
                     }
-
-                    Statement s = ResourceFactory.createStatement(sub, prd, obj);
-                    model1 = model1.remove(p);
-                    model1 = model1.add(s);
-                    properties = r.listProperties();
                 }
-                */
 
                 /*
                   1..N Case
@@ -384,7 +399,8 @@ public class Main {
                 if (entities1N.contains(p.getPredicate().toString())) {
                     Pair<HashSet<Statement>, HashSet<Statement>> pp = getMappedURI(set, prd.toString());
 
-                    String ent1URI = null, ent2URI = null;
+                    String ent1URI = null;
+                    String ent2URI = null;
                     for (Statement st : pp.getRight()) {
                         if (st.getPredicate().toString().contains("#entity1")) {
                             ent1URI = st.getObject().toString();
