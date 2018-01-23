@@ -29,6 +29,7 @@ public class Main {
     private static HashSet<String> entities11;
     private static HashSet<String> entities1N;
     private static HashSet<String> entitiesN1;
+    private static HashSet<String> avoided;
 
     private static String getOntlogyLink1() {
         OntModel m = getOntologyModel(ONT_1_OWL);
@@ -279,8 +280,12 @@ public class Main {
             p.getRight().forEach(st -> hs2.add((st.getPredicate()).toString()));
 
             if (hs1.size() > 1 && hs2.size() == 1) {
-                //System.out.println("Test 1");
-                ret.add(p.getLeft().iterator().next().getObject().toString());
+                for (Statement st : p.getLeft()) {
+                    if (st.getPredicate().toString().contains("#entity1")) {
+                        ret.add(st.getObject().toString());
+                    }
+                }
+                //ret.add(p.getLeft().iterator().next().getObject().toString()); // hs1.size() > 1
             }
         }
 
@@ -297,6 +302,18 @@ public class Main {
         }
 
         return null;
+    }
+
+    private static HashSet<String> avoidedClass() {
+        HashSet<String> ret = new HashSet<String>();
+        OntModel m = getOntologyModel(ONT_1_OWL);
+        for (String i : entitiesN1) {
+            for (OntResource r : m.getOntProperty(i).listRange().toList()) {
+                ret.add(r.toString());
+            }
+        }
+
+        return ret;
     }
 
     public static void main(String[] args){
@@ -350,49 +367,67 @@ public class Main {
         //printClasses(m);
 
         int id = 0;
+        avoided = avoidedClass();
         ResIterator it = model1.listSubjects();
         while (it.hasNext()) {
             Resource r = it.nextResource();
-            if (r.toString().contains("City"))
-                continue;
+            Statement rType = r.getProperty(ResourceFactory.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
+            if (rType != null) {
+                if (avoided.contains(rType.getObject().toString()))
+                    continue;
+            }
 
             StmtIterator properties = r.listProperties();
-            HashSet<Statement> propHS = new HashSet<>(r.listProperties().toSet());
-
-            //System.out.println(propHS);
             while (properties.hasNext()) {
+
                 Statement p = properties.nextStatement();
+
                 Resource sub = p.getSubject();
                 Property prd = p.getPredicate();
                 RDFNode obj = p.getObject();
 
-                /*
-                 * 1..1 Case
-                 */
-                if (entities11.contains(prd.toString())) {
-                    prd = ResourceFactory.createProperty(getMappedURI(set, prd.toString()).getRight().iterator().next().getObject().toString());
-                    Statement s = ResourceFactory.createStatement(sub, prd, obj);
-                    model1 = model1.remove(p);
-                    model1 = model1.add(s);
-                    properties = r.listProperties();
-                }
-
                 //N..1 Case
                 if (entitiesN1.contains(p.getPredicate().toString())) {
                     Pair<HashSet<Statement>, HashSet<Statement>> pp = getMappedURI(set, prd.toString());
-                    System.out.println("Predicat :" + prd);
-                    for (Statement st : pp.getRight()) {
-                        String stringifiedObject = st.getObject().toString();
-                        Property prd1 = ResourceFactory.createProperty(stringifiedObject);
-                        obj = ResourceFactory.createStringLiteral(model1.getResource(stringifiedObject).toString());//
+
+                    String ent1URI = null;
+                    String ent2URI = pp.getRight().iterator().next().getObject().toString();
+
+                    for (Statement st : pp.getLeft()) {
+                        if (st.getPredicate().toString().contains("#entity2")) {
+                            ent1URI = st.getObject().toString();
+                        }
+                    }
+                    for (Statement st : pp.getLeft()) {
+                        Resource indv = model1.getResource(p.getObject().toString());
+
+                        Property prd1 = ResourceFactory.createProperty(ent2URI);
+                        obj = ResourceFactory.createStringLiteral(indv.getProperty(ResourceFactory.createProperty(ent1URI)).getObject().toString());//
                         Statement s = ResourceFactory.createStatement(sub, prd1, obj);
-                        System.out.println(s);
+                        //System.out.println(s);
                         model1 = model1.remove(p);
                         model1 = model1.add(s);
                         properties = r.listProperties();
                     }
                 }
+            }
+        }
 
+        it = model1.listSubjects();
+        while (it.hasNext()) {
+            Resource r = it.nextResource();
+            Statement rType = r.getProperty(ResourceFactory.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
+            if (rType != null) {
+                if (avoided.contains(rType.getObject().toString()))
+                    continue;
+            }
+
+            StmtIterator properties = r.listProperties();
+            while (properties.hasNext()) {
+                Statement p = properties.nextStatement();
+                Resource sub = p.getSubject();
+                Property prd = p.getPredicate();
+                RDFNode obj = p.getObject();
                 /*
                   1..N Case
                  */
@@ -440,17 +475,47 @@ public class Main {
                     }
 
                     Statement s = ResourceFactory.createStatement(sub, prd, obj);
-                    System.out.println(s);
+                    //System.out.println(s);
                     model1 = model1.remove(p);
                     model1 = model1.add(s);
                     properties = r.listProperties();
                 }
+            }
+        }
 
+
+        it = model1.listSubjects();
+        while (it.hasNext()) {
+            Resource r = it.nextResource();
+            Statement rType = r.getProperty(ResourceFactory.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
+            if (rType != null) {
+                if (avoided.contains(rType.getObject().toString()))
+                    continue;
+            }
+
+            StmtIterator properties = r.listProperties();
+            while (properties.hasNext()) {
+                Statement p = properties.nextStatement();
+                Resource sub = p.getSubject();
+                Property prd = p.getPredicate();
+                RDFNode obj = p.getObject();
+                /*
+                 * 1..1 Case
+                 */
+                if (entities11.contains(prd.toString())) {
+                    prd = ResourceFactory.createProperty(getMappedURI(set, prd.toString()).getRight().iterator().next().getObject().toString());
+                    Statement s = ResourceFactory.createStatement(sub, prd, obj);
+                    model1 = model1.remove(p);
+                    model1 = model1.add(s);
+                    properties = r.listProperties();
+                }
             }
 
             properties = r.listProperties();
             while (properties.hasNext()) {
-                m.add(properties.nextStatement());
+                Statement st = properties.nextStatement();
+                //System.out.println(st);
+                m.add(st);
             }
         }
 
