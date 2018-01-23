@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InformationIntegration.iml" filepath="$PROJECT_DIR$/InformationIntegration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/m2dk.iml" filepath="$PROJECT_DIR$/m2dk.iml" />
     </modules>
   </component>
 </project>

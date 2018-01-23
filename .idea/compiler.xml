@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="InformationIntegration" />
+        <module name="m2dk" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="InformationIntegration" target="1.8" />
+      <module name="m2dk" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
