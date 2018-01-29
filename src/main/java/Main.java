@@ -18,12 +18,21 @@ import java.util.HashSet;
 public class Main {
     private static String ONT_1_LINK;
     private static String ONT_2_LINK;
+    // Mapping from Restaurant1 -> Restaurant2
     private final static String ONT_1_OWL = "data/ontology_restaurant1_rdf.owl";
     private final static String ONT_2_OWL = "data/ontology_restaurant2_rdf.owl";
     private final static String ONT_1_RDF = "data/restaurant1.rdf";
     private final static String ONT_2_RDF = "data/restaurant2.rdf";
     private final static String MAPPING_FILE = "data/mapping_restaurant.rdf";
-    private final static String OUTPUT_RDF = "data/restaurant1_out.rdf";
+    private final static String OUTPUT_RDF = "data/restaurant2_out.rdf";
+    /* Decomment to map from Restaurant2 -> Restaurant1
+    private final static String ONT_1_OWL = "data/ontology_restaurant2_rdf.owl";
+    private final static String ONT_2_OWL = "data/ontology_restaurant1_rdf.owl";
+    private final static String ONT_1_RDF = "data/restaurant2.rdf";
+    private final static String ONT_2_RDF = "data/restaurant1.rdf";
+    private final static String MAPPING_FILE = "data/mapping_inverse.rdf";
+    private final static String OUTPUT_RDF = "data/restaurant2_out.rdf";
+    */
     private static HashSet<String> entities11;
     private static HashSet<String> entities1N;
     private static HashSet<String> entitiesN1;
