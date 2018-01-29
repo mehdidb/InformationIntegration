@@ -7,9 +7,7 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.shared.JenaException;
 import org.apache.jena.util.FileManager;
-import org.apache.jena.util.iterator.ExtendedIterator;
 
-import javax.swing.plaf.nimbus.State;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -84,6 +82,7 @@ public class Main {
             }
         }
     }
+    */
 
     private static void printModel(Model m) {
         ResIterator it = m.listSubjects();
@@ -97,7 +96,7 @@ public class Main {
             }
         }
     }
-
+    /**
     private static void printClasses(OntModel m) {
         for (OntClass i : m.listClasses().toList()) {
             System.out.println(i);
@@ -184,58 +183,63 @@ public class Main {
 
         return ret;
     }
-    /*
+
     private static void printSets(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set) {
         for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
-            System.out.print(i.getLeft());
-            System.out.print(" ----> ");
-            System.out.print(i.getRight());
-            System.out.println();
+            System.out.print("[ ");
+            for (Statement st : i.getLeft())
+                System.out.print(st.getPredicate() + "," + st.getObject() + " ");
+            //System.out.print(i.getLeft());
+            System.out.print("] ----> [ ");
+            for (Statement st : i.getRight())
+                System.out.print(st.getPredicate() + "," + st.getObject() + " ");
+            //System.out.print(i.getRight());
+            System.out.println("]");
         }
     }
 
-
-    private static HashSet<String> findMatch(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s, HashSet<Statement> q) {
-        //System.out.println("Entering");
-        HashSet<String> qHS = new HashSet<>();
-        for (Statement v : q) {
-            if ((v.getPredicate().toString()).contains(ONT_1_LINK)) {
-                //System.out.println(new String((v.getPredicate()).toString()));
-                qHS.add(new String((v.getPredicate()).toString()));
-            }
-        }
-
-        //System.out.println("DEBUG qHS=" + qHS);
-
-        for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
-            HashSet<String> lHS = new HashSet<>();
-
-            for (Statement v : p.getLeft()) {
-                if ((v.getObject().toString()).contains(ONT_1_LINK)) {
-                    //System.out.println(new String((v.getObject()).toString()));
-                    lHS.add(new String((v.getObject()).toString()));
+    /*
+        private static HashSet<String> findMatch(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s, HashSet<Statement> q) {
+            //System.out.println("Entering");
+            HashSet<String> qHS = new HashSet<>();
+            for (Statement v : q) {
+                if ((v.getPredicate().toString()).contains(ONT_1_LINK)) {
+                    //System.out.println(new String((v.getPredicate()).toString()));
+                    qHS.add(new String((v.getPredicate()).toString()));
                 }
             }
 
-            //System.out.println("DEBUG lHS=" + lHS);
+            //System.out.println("DEBUG qHS=" + qHS);
 
-            if (lHS.equals(qHS)) {
-                HashSet<String> ret = new HashSet<>();
-                for (Statement v : p.getRight()) {
-                    if ((v.getObject().toString()).contains(ONT_2_LINK)) {
-                        //System.out.println(v.getObject().toString());
-                        ret.add(new String((v.getObject()).toString()));
+            for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
+                HashSet<String> lHS = new HashSet<>();
+
+                for (Statement v : p.getLeft()) {
+                    if ((v.getObject().toString()).contains(ONT_1_LINK)) {
+                        //System.out.println(new String((v.getObject()).toString()));
+                        lHS.add(new String((v.getObject()).toString()));
                     }
                 }
-                //System.out.println("Exiting");
-                return ret;
+
+                //System.out.println("DEBUG lHS=" + lHS);
+
+                if (lHS.equals(qHS)) {
+                    HashSet<String> ret = new HashSet<>();
+                    for (Statement v : p.getRight()) {
+                        if ((v.getObject().toString()).contains(ONT_2_LINK)) {
+                            //System.out.println(v.getObject().toString());
+                            ret.add(new String((v.getObject()).toString()));
+                        }
+                    }
+                    //System.out.println("Exiting");
+                    return ret;
+                }
+
             }
 
+            return null;
         }
-
-        return null;
-    }
-    */
+        */
     private static HashSet<String> generateEntities11(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s) {
         HashSet<String> ret = new HashSet<>();
         for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
@@ -345,6 +349,7 @@ public class Main {
          */
         Model mapping = RDFDataMgr.loadModel(MAPPING_FILE);
         HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set = generateSets(mapping);
+        //printModel(mapping);
         //printSets(set);
 
         /*
@@ -371,6 +376,15 @@ public class Main {
         ResIterator it = model1.listSubjects();
         while (it.hasNext()) {
             Resource r = it.nextResource();
+            /*
+            if (r.toString().contains(ONT_1_LINK)) {
+                // System.out.println(r);
+                continue;
+            }
+            */
+
+
+
             Statement rType = r.getProperty(ResourceFactory.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
             if (rType != null) {
                 if (avoided.contains(rType.getObject().toString()))
@@ -450,6 +464,10 @@ public class Main {
                     DatatypeProperty prp = null;
                     Individual ind = null;
                     prd = ResourceFactory.createProperty(ent1URI);
+                    if (m.getOntClass(ONT_2_LINK + "#" + StringUtils.capitalize(p.getPredicate().toString().split("#")[1])) == null) {
+                        m.createClass(ONT_2_LINK + "#" + StringUtils.capitalize(p.getPredicate().toString().split("#")[1]));
+                    }
+
                     for (Individual k : m.listIndividuals().toList()) {
                         if (create == false)
                             break;
@@ -514,7 +532,12 @@ public class Main {
             properties = r.listProperties();
             while (properties.hasNext()) {
                 Statement st = properties.nextStatement();
-                //System.out.println(st);
+                /*
+                if (st.getSubject().toString().contains(ONT_1_LINK) && st.getSubject().toString().split("#")[1].charAt(0) <= 'z' && st.getSubject().toString().split("#")[1].charAt(0) >= 'a') {
+                    System.out.println(st);
+                    continue;
+                }
+                */
                 m.add(st);
             }
         }
@@ -536,7 +559,7 @@ public class Main {
             {
                 e.printStackTrace();
             }
-            System.out.println("Ontology " + ontoFile + " loaded.");
+            //System.out.println("Ontology " + ontoFile + " loaded.");
         }
         catch (JenaException je)
         {
