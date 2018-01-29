@@ -29,6 +29,11 @@ public class Main {
     private static HashSet<String> entitiesN1;
     private static HashSet<String> avoided;
 
+    /**
+     * Permet de retourner le lien de la première ontologie
+     *
+     * @return
+     */
     private static String getOntlogyLink1() {
         OntModel m = getOntologyModel(ONT_1_OWL);
         for (OntClass i : m.listClasses().toList()) {
@@ -40,6 +45,10 @@ public class Main {
         return null;
     }
 
+    /**
+     * Permet de retourner le lien de la deuxième ontologie
+     * @return
+     */
     private static String getOntlogyLink2() {
         OntModel m = getOntologyModel(ONT_2_OWL);
         for (OntClass i : m.listClasses().toList()) {
@@ -82,7 +91,7 @@ public class Main {
             }
         }
     }
-    */
+
 
     private static void printModel(Model m) {
         ResIterator it = m.listSubjects();
@@ -96,19 +105,24 @@ public class Main {
             }
         }
     }
-    /**
-    private static void printClasses(OntModel m) {
-        for (OntClass i : m.listClasses().toList()) {
-            System.out.println(i);
-            ExtendedIterator<OntProperty> list = i.listDeclaredProperties();
-            while (list.hasNext()) {
-                Property p = list.next();
-                System.out.println("Property : " + p);
-            }
-        }
-    }
     */
+    /**
+     * private static void printClasses(OntModel m) {
+     * for (OntClass i : m.listClasses().toList()) {
+     * System.out.println(i);
+     * ExtendedIterator<OntProperty> list = i.listDeclaredProperties();
+     * while (list.hasNext()) {
+     * Property p = list.next();
+     * System.out.println("Property : " + p);
+     * }
+     * }
+     * }
+     */
 
+    /** Permet de générer le flux résultat
+     * Dans notre cas, il est redirigé vers un fichier dans le dossier data
+     * @param m
+     */
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private static void outputModel(OntModel m) {
         FileOutputStream fop = null;
@@ -139,6 +153,14 @@ public class Main {
         }
     }
 
+    /** Permet de générer l'ensemble des paires décrivant les mappaages.
+     *
+     * L'élément gauche de chaque paire représente les triplets relatifs à la première ontologie
+     * L'élement droit représente les triplets relatif à la deuxième ontologie
+     * L'ensemble sera utilisé pour déterminer la nature du mappage à effectuer ainsi que les propriétés à mapper
+     * @param map
+     * @return
+     */
     private static HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> generateSets(Model map) {
         HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> ret = new HashSet<>();
 
@@ -183,7 +205,7 @@ public class Main {
 
         return ret;
     }
-
+    /*
     private static void printSets(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set) {
         for (Pair<HashSet<Statement>, HashSet<Statement>> i : set) {
             System.out.print("[ ");
@@ -198,7 +220,7 @@ public class Main {
         }
     }
 
-    /*
+
         private static HashSet<String> findMatch(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s, HashSet<Statement> q) {
             //System.out.println("Entering");
             HashSet<String> qHS = new HashSet<>();
@@ -240,6 +262,12 @@ public class Main {
             return null;
         }
         */
+
+    /** Permet des générer les propriétés à mapper en situation 1 -> 1 en isolant les URIs des prédicats
+     *
+     * @param s
+     * @return
+     */
     private static HashSet<String> generateEntities11(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s) {
         HashSet<String> ret = new HashSet<>();
         for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
@@ -257,6 +285,11 @@ public class Main {
         return ret;
     }
 
+    /** Permet des générer les propriétés à mapper en situation 1 -> N en isolant les URIs des prédicats
+     *
+     * @param s
+     * @return
+     */
     private static HashSet<String> generateEntities1N(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s) {
         HashSet<String> ret = new HashSet<>();
         for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
@@ -274,6 +307,11 @@ public class Main {
         return ret;
     }
 
+    /** Permet des générer les propriétés à mapper en situation N -> 1 en isolant les URIs des prédicats
+     *
+     * @param s
+     * @return
+     */
     private static HashSet<String> generateEntitiesN1(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> s) {
         HashSet<String> ret = new HashSet<>();
         for (Pair<HashSet<Statement>, HashSet<Statement>> p : s) {
@@ -296,6 +334,12 @@ public class Main {
         return ret;
     }
 
+    /** Permet d'avoir la paire représentant le prédicat hs (une URI) dans l'ensemble de mappage du sujet de la ressource.
+     *
+     * @param set
+     * @param hs
+     * @return
+     */
     private static Pair<HashSet<Statement>, HashSet<Statement>> getMappedURI(HashSet<Pair<HashSet<Statement>, HashSet<Statement>>> set, String hs) {
         for (Pair<HashSet<Statement>, HashSet<Statement>> p : set) {
             for (Statement i : p.getLeft()) {
@@ -308,6 +352,12 @@ public class Main {
         return null;
     }
 
+    /**
+     * Cette fonction permet de déterminer les classes d'invdidus que l'on va ignoner. Il s'agit de celles vers lesquelles
+     * pointent les Object Properties des mappages N->1 (Range), parce qu'ils ne sont pas mappables (en effet, ces classes
+     * n'existent pas dans l'autre ontologie). Plus tard, on aura juste besoin de vérifier le type des individus.
+     * @return
+     */
     private static HashSet<String> avoidedClass() {
         HashSet<String> ret = new HashSet<String>();
         OntModel m = getOntologyModel(ONT_1_OWL);
@@ -320,7 +370,7 @@ public class Main {
         return ret;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         /*
          * Read the ontology and the RDF graph from restaurant1
          */
@@ -373,6 +423,9 @@ public class Main {
 
         int id = 0;
         avoided = avoidedClass();
+        /*
+        N..1 Case
+         */
         ResIterator it = model1.listSubjects();
         while (it.hasNext()) {
             Resource r = it.nextResource();
@@ -384,7 +437,11 @@ public class Main {
             */
 
 
-
+            /**
+             * Cette partie du code permet de ne traiter que les individus des classes non évitées, obtenues par la méthode avoidedClass()
+             * La première ligne permet de récupérer les triplets tels que leurs prédicats soient égaux à ce que est précisé dans (createProperty())
+             * (i.e le lien vers le type, ou classe, dans ce cas)
+             */
             Statement rType = r.getProperty(ResourceFactory.createProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
             if (rType != null) {
                 if (avoided.contains(rType.getObject().toString()))
@@ -400,7 +457,7 @@ public class Main {
                 Property prd = p.getPredicate();
                 RDFNode obj = p.getObject();
 
-                //N..1 Case
+
                 if (entitiesN1.contains(p.getPredicate().toString())) {
                     Pair<HashSet<Statement>, HashSet<Statement>> pp = getMappedURI(set, prd.toString());
 
@@ -426,7 +483,9 @@ public class Main {
                 }
             }
         }
-
+        /*
+          1..N Case
+         */
         it = model1.listSubjects();
         while (it.hasNext()) {
             Resource r = it.nextResource();
@@ -442,9 +501,7 @@ public class Main {
                 Resource sub = p.getSubject();
                 Property prd = p.getPredicate();
                 RDFNode obj = p.getObject();
-                /*
-                  1..N Case
-                 */
+
                 if (entities1N.contains(p.getPredicate().toString())) {
                     Pair<HashSet<Statement>, HashSet<Statement>> pp = getMappedURI(set, prd.toString());
 
@@ -501,7 +558,9 @@ public class Main {
             }
         }
 
-
+        /*
+         * 1..1 Case
+         */
         it = model1.listSubjects();
         while (it.hasNext()) {
             Resource r = it.nextResource();
@@ -517,9 +576,7 @@ public class Main {
                 Resource sub = p.getSubject();
                 Property prd = p.getPredicate();
                 RDFNode obj = p.getObject();
-                /*
-                 * 1..1 Case
-                 */
+
                 if (entities11.contains(prd.toString())) {
                     prd = ResourceFactory.createProperty(getMappedURI(set, prd.toString()).getRight().iterator().next().getObject().toString());
                     Statement s = ResourceFactory.createStatement(sub, prd, obj);
@@ -545,24 +602,23 @@ public class Main {
         outputModel(m);
     }
 
-    private static OntModel getOntologyModel(String ontoFile)
-    {
+    /**
+     * Permet de charger l'ontologie depuis un fichier (version OWL1)
+     *
+     * @param ontoFile
+     * @return
+     */
+    private static OntModel getOntologyModel(String ontoFile) {
         OntModel ontoModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
-        try
-        {
+        try {
             InputStream in = FileManager.get().open(ontoFile);
-            try
-            {
+            try {
                 ontoModel.read(in, null);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             //System.out.println("Ontology " + ontoFile + " loaded.");
-        }
-        catch (JenaException je)
-        {
+        } catch (JenaException je) {
             System.err.println("ERROR" + je.getMessage());
             je.printStackTrace();
             System.exit(0);
